@@ -1,0 +1,33 @@
+Personalized Birthday Cakes
+
+User functions
+-----------------------
+1. Log in and log out
+2. Registration providing name, address, and payment type
+3. Order tracking
+4. Cake can be picked up from store or delivered during order checkout
+
+Admin functions
+-----------------------
+1. Orders can be fulfilled and managed
+- Order table will contain orders placed by multiple customers and a customer can place more than one order
+
+2. Inventory tracking
+
+Core app functionality
+-----------------------
+1. Cakes based on size:
+ - One person personal cake
+ - Medium cake for several people
+ - One large cake for many people
+
+2. Flavors:
+ - Vanilla with colorful sprinkles
+ - Chocolate cake
+ - Fruit cake option
+
+3. Cake decoration:
+ - Personalized with age and name
+
+4. Cake can be assigned a date of manufacture
+
