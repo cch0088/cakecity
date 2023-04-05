@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { Route, Switch } from "react-router-dom";
 
 import NavBar from './components/NavBar';
-import Heading from './components/Heading';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './components/Home';
 import Login from './components/Login';
 
@@ -30,7 +31,7 @@ function App() {
 
   return (
     <div>
-      <Heading />
+      <Header />
       <NavBar/>
       <Switch>
         <Route exact path="/">
@@ -49,6 +50,7 @@ function App() {
           <Home />
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
 }

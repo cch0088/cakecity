@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
 
-function Heading() {
+function Header() {
 
 return (
     <div className="heading">
@@ -11,4 +11,4 @@ return (
     </div>
     )
 }
-export default Heading;
+export default Header;
