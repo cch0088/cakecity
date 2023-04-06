@@ -1,10 +1,42 @@
 import React from "react";
+import CakeCard from "./CakeCard";
 
 function Home() {
 
 return(
     <div className="content">
-        Test test test test test test test test
+        <div id="cakecard-container">
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
+        </div>
     </div>
     )
 }
