@@ -15,27 +15,6 @@ return(
             <CakeCard />
             <CakeCard />
             <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
         </div>
     </div>
     )

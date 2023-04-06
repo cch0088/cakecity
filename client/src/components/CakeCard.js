@@ -4,7 +4,10 @@ function CakeCard() {
 
 return (
     <div className="cakecard">
-        <div>Test</div>
+        <div className="cakecard-thumbnail-container">
+            <img src="./cakecity/cakes/large-cake.png" alt="Large Cake" />
+        </div>
+        <div className="cakecard-text">Large Cake</div>
     </div>
     )
 }
