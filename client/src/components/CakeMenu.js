@@ -33,7 +33,7 @@ return(
             </div>
         </div>
         <div id="cakecard-container">
-            <CakeCard />
+            <CakeCard name="Large Cake"/>
             <CakeCard />
             <CakeCard />
             <CakeCard />

@@ -1,13 +1,13 @@
 import React from "react";
 
-function CakeCard() {
+function CakeCard(props) {
 
 return (
     <div className="cakecard">
         <div className="cakecard-thumbnail-container">
-            <img src="./cakecity/cakes/large-cake.png" alt="Large Cake" />
+            <img src={props.image_url} alt={props.name} />
         </div>
-        <div className="cakecard-text">Large Cake</div>
+        <div className="cakecard-text">{props.name}</div>
     </div>
     )
 }
