@@ -1,22 +1,22 @@
 {
     "users": [
         {
-            "id": "1",
+            "id": 1,
             "username": "admin",
             "password": "admin"
         },
         {
-            "id": "2",
+            "id": 2,
             "username": "test",
             "password": "test"
         }
     ],
     "orders": [
         {
-            "id": "1",
-            "cake_id": "1",
-            "user_id": "2",
-            "total_price": "30",
+            "id": 1,
+            "cake_id": 1,
+            "user_id": 2,
+            "total_price": 30,
             "make_on_date": "2/2/2024",
             "created_at": "",
             "updated_at": ""
@@ -24,76 +24,85 @@
     ],
     "cakes": [
         {
-            "id": "1",
+            "id": 1,
             "name": "Personal Fruit Cake",
-            "size": "1",
+            "size": 1,
             "image_url": "./cakes/large-cake.png",
             "contents": ["fruit"],
-            "base_price": "20"
+            "base_type": 1,
+            "base_price": 20
         },
         {
-            "id": "2",
+            "id": 2,
             "name": "Medium Fruit Cake",
-            "size": "2",
+            "size": 2,
             "image_url": "./cakes/large-cake.png",
             "contents": ["fruit"],
-            "base_price": "30"
+            "base_type": 1,
+            "base_price": 30
         },
         {
-            "id": "3",
+            "id": 3,
             "name": "Large Fruit Cake",
-            "size": "3",
+            "size": 3,
             "image_url": "./cakes/large-cake.png",
             "contents": ["fruit"],
-            "base_price": "40"
+            "base_type": 1,
+            "base_price": 40
         },
         {
-            "id": "4",
+            "id": 4,
             "name": "Personal Vanilla Cake",
-            "size": "1",
+            "size": 1,
             "image_url": "./cakes/large-cake.png",
             "contents": ["vanilla"],
-            "base_price": "20"
+            "base_type": 2,
+            "base_price": 20
         },
         {
-            "id": "5",
+            "id": 5,
             "name": "Medium Vanilla Cake",
-            "size": "2",
+            "size": 2,
             "image_url": "./cakes/large-cake.png",
             "contents": ["vanilla"],
-            "base_price": "30"
+            "base_type": 2,
+            "base_price": 30
         },
         {
-            "id": "6",
+            "id": 6,
             "name": "Large Vanilla Cake",
-            "size": "3",
+            "size": 3,
             "image_url": "./cakes/large-cake.png",
             "contents": ["vanilla"],
-            "base_price": "40"
+            "base_type": 2,
+            "base_price": 40
         },
         {
-            "id": "7",
+            "id": 7,
             "name": "Personal Chocolate Cake",
-            "size": "1",
+            "size": 1,
             "image_url": "./cakes/large-cake.png",
             "contents": ["chocolate"],
-            "base_price": "20"
+            "base_type": 3,
+            "base_price": 20
         },
         {
-            "id": "8",
+            "id": 8,
             "name": "Medium Chocolate Cake",
-            "size": "2",
+            "size": 2,
             "image_url": "./cakes/large-cake.png",
             "contents": ["chocolate"],
-            "base_price": "30"
+            "base_type": 3,
+            "base_price": 30
         },
         {
-            "id": "9",
+            "id": 9,
             "name": "Large Chocolate Cake",
-            "size": "3",
+            "size": 3,
             "image_url": "./cakes/large-cake.png",
             "contents": ["chocolate"],
-            "base_price": "40"
+            "base_type": 3,
+            "base_price": 40
         }
     ]
 }
