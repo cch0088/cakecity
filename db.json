@@ -27,7 +27,7 @@
             "id": 1,
             "name": "Personal Fruit Cake",
             "size": 1,
-            "image_url": "./cakes/personal-fruit-cake.png",
+            "image": "personal-fruit-cake.png",
             "contents": ["fruit"],
             "base_type": 1,
             "base_price": 20
@@ -36,7 +36,7 @@
             "id": 2,
             "name": "Medium Fruit Cake",
             "size": 2,
-            "image_url": "./cakes/medium-fruit-cake.png",
+            "image": "medium-fruit-cake.png",
             "contents": ["fruit"],
             "base_type": 1,
             "base_price": 30
@@ -45,7 +45,7 @@
             "id": 3,
             "name": "Large Fruit Cake",
             "size": 3,
-            "image_url": "./cakes/large-fruit-cake.png",
+            "image": "large-fruit-cake.png",
             "contents": ["fruit"],
             "base_type": 1,
             "base_price": 40
@@ -54,7 +54,7 @@
             "id": 4,
             "name": "Personal Vanilla Cake",
             "size": 1,
-            "image_url": "./cakes/personal-vanilla-cake.png",
+            "image": "personal-vanilla-cake.png",
             "contents": ["vanilla"],
             "base_type": 2,
             "base_price": 20
@@ -63,7 +63,7 @@
             "id": 5,
             "name": "Medium Vanilla Cake",
             "size": 2,
-            "image_url": "./cakes/medium-vanilla-cake.png",
+            "image": "medium-vanilla-cake.png",
             "contents": ["vanilla"],
             "base_type": 2,
             "base_price": 30
@@ -72,7 +72,7 @@
             "id": 6,
             "name": "Large Vanilla Cake",
             "size": 3,
-            "image_url": "./cakes/large-vanilla-cake.png",
+            "image": "large-vanilla-cake.png",
             "contents": ["vanilla"],
             "base_type": 2,
             "base_price": 40
@@ -81,7 +81,7 @@
             "id": 7,
             "name": "Personal Chocolate Cake",
             "size": 1,
-            "image_url": "./cakes/personal-chocolate-cake.png",
+            "image": "personal-chocolate-cake.png",
             "contents": ["chocolate"],
             "base_type": 3,
             "base_price": 20
@@ -90,7 +90,7 @@
             "id": 8,
             "name": "Medium Chocolate Cake",
             "size": 2,
-            "image_url": "./cakes/medium-chocolate-cake.png",
+            "image": "medium-chocolate-cake.png",
             "contents": ["chocolate"],
             "base_type": 3,
             "base_price": 30
@@ -99,7 +99,7 @@
             "id": 9,
             "name": "Large Chocolate Cake",
             "size": 3,
-            "image_url": "./cakes/large-chocolate-cake.png",
+            "image": "large-chocolate-cake.png",
             "contents": ["chocolate"],
             "base_type": 3,
             "base_price": 40
