@@ -13,22 +13,22 @@ import './App.css';
 function App() {
   const [user, setUser] = useState(null);
   
-  const login = "/check_login";
+  // const login = "/check_login";
 
-  // Check log in status
-  useEffect(() => {
-    fetch(login).then(
-      (resp) => {
-        if (resp.ok) {
-          resp.json().then(
-            (user) => {
-              setUser(user)
-            }
-          );
-        }
-      }
-    )
-  }, []);
+  // // Check log in status
+  // useEffect(() => {
+  //   fetch(login).then(
+  //     (resp) => {
+  //       if (resp.ok) {
+  //         resp.json().then(
+  //           (user) => {
+  //             setUser(user)
+  //           }
+  //         );
+  //       }
+  //     }
+  //   )
+  // }, []);
 
   return (
     <div>

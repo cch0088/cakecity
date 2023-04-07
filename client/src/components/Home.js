@@ -1,5 +1,4 @@
 import React from "react";
-import CakeCard from "./CakeCard";
 
 function Home() {
 
