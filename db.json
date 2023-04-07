@@ -27,7 +27,7 @@
             "id": "1",
             "name": "Personal Fruit Cake",
             "size": "1",
-            "image_url": "./cakecity/cakes/large-cake.png",
+            "image_url": "./cakes/large-cake.png",
             "contents": ["fruit"],
             "base_price": "20"
         },
@@ -35,7 +35,7 @@
             "id": "2",
             "name": "Medium Fruit Cake",
             "size": "2",
-            "image_url": "./cakecity/cakes/large-cake.png",
+            "image_url": "./cakes/large-cake.png",
             "contents": ["fruit"],
             "base_price": "30"
         },
@@ -43,7 +43,7 @@
             "id": "3",
             "name": "Large Fruit Cake",
             "size": "3",
-            "image_url": "./cakecity/cakes/large-cake.png",
+            "image_url": "./cakes/large-cake.png",
             "contents": ["fruit"],
             "base_price": "40"
         },
@@ -51,7 +51,7 @@
             "id": "4",
             "name": "Personal Vanilla Cake",
             "size": "1",
-            "image_url": "./cakecity/cakes/large-cake.png",
+            "image_url": "./cakes/large-cake.png",
             "contents": ["vanilla"],
             "base_price": "20"
         },
@@ -59,7 +59,7 @@
             "id": "5",
             "name": "Medium Vanilla Cake",
             "size": "2",
-            "image_url": "./cakecity/cakes/large-cake.png",
+            "image_url": "./cakes/large-cake.png",
             "contents": ["vanilla"],
             "base_price": "30"
         },
@@ -67,7 +67,7 @@
             "id": "6",
             "name": "Large Vanilla Cake",
             "size": "3",
-            "image_url": "./cakecity/cakes/large-cake.png",
+            "image_url": "./cakes/large-cake.png",
             "contents": ["vanilla"],
             "base_price": "40"
         },
@@ -75,7 +75,7 @@
             "id": "7",
             "name": "Personal Chocolate Cake",
             "size": "1",
-            "image_url": "./cakecity/cakes/large-cake.png",
+            "image_url": "./cakes/large-cake.png",
             "contents": ["chocolate"],
             "base_price": "20"
         },
@@ -83,7 +83,7 @@
             "id": "8",
             "name": "Medium Chocolate Cake",
             "size": "2",
-            "image_url": "./cakecity/cakes/large-cake.png",
+            "image_url": "./cakes/large-cake.png",
             "contents": ["chocolate"],
             "base_price": "30"
         },
@@ -91,7 +91,7 @@
             "id": "9",
             "name": "Large Chocolate Cake",
             "size": "3",
-            "image_url": "./cakecity/cakes/large-cake.png",
+            "image_url": "./cakes/large-cake.png",
             "contents": ["chocolate"],
             "base_price": "40"
         }

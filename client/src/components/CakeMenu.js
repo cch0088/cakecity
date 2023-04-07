@@ -1,7 +1,16 @@
 import React from "react";
 import CakeCard from "./CakeCard";
+import { useState, useEffect } from "react";
 
 function CakeMenu() {
+
+    const API = "/cakes";
+
+    const [cakes, setCakes] = useState([]);
+
+    useEffect(() => {
+        fetch(API).then(resp => resp.json()).then(data => setCakes(data));
+    }, []);
 
     function toggleFilterMenu(e) {
         const dropbtn = document.querySelector("#" + e.target.id);
@@ -33,10 +42,9 @@ return(
             </div>
         </div>
         <div id="cakecard-container">
-            <CakeCard name="Large Cake"/>
-            <CakeCard />
-            <CakeCard />
-            <CakeCard />
+            {cakes.map((cake, index) => {
+                return <CakeCard key={index} {...cake} />;
+            })}
         </div>
     </div>
     )

@@ -1,6 +1,6 @@
 {
   "name": "cakecity",
-  "proxy": "http://127.0.0.1:5555",
+  "proxy": "https://my-json-server.typicode.com/cch0088/cakecity",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
