@@ -34,6 +34,9 @@ return(
         </div>
         <div id="cakecard-container">
             <CakeCard />
+            <CakeCard />
+            <CakeCard />
+            <CakeCard />
         </div>
     </div>
     )

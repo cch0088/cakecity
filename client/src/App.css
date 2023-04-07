@@ -7,7 +7,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-y: hidden;
 }
 
 code {
@@ -57,8 +56,8 @@ code {
 
 .filter-nav {
   padding-top: 10px;
-  display: flex;
-  justify-content: center;
+  display: inline-block;
+  text-align: center;
 }
 
 .dropdown {
@@ -130,15 +129,16 @@ code {
   background-color:rgb(53, 179, 36);
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  min-height: 62vh;
   overflow-y: scroll;
 }
 
 #cakecard-container {
   margin:10px;
-  padding: 40px;
+  padding: 30px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .cakecard-thumbnail-container {
@@ -189,12 +189,12 @@ code {
     margin-top: 8px;
   }
   .cakecard {
-    width: 140px;
-    height: 210px;
+    width: 30vw;
+    height: 30vh;
     font-size: small;
   }
-  .content {
-    flex-direction: row;
+  #cakecard-container {
+    padding: 20px;
   }
 }
 
@@ -208,9 +208,6 @@ code {
   align-items: center;
   justify-content: center;
   font-size: x-small;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
 
 .login-form {
