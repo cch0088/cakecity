@@ -27,7 +27,7 @@ function CakeMenu() {
         {
             selectedItem.classList.toggle("dropdown-content-select");
             e.target.classList.toggle("dropdown-content-select");
-            e.target.parentElement.previousSibling.textContent = e.target.text + " ⌄";
+            e.target.parentElement.previousSibling.textContent = e.target.textContent + " ⌄";
         }
         switch(e.target.className)
         {
@@ -48,19 +48,19 @@ return(
             <div className="dropdown">
                 <div className="dropdown-button" id="btnCakeSize" onClick={toggleFilterMenu}>All Sizes&nbsp;&nbsp;&#8964;</div>
                 <div className="dropdown-content" id="listCakeSize">
-                    <a onClick={toggleFilter} id="s0" className="toggleSize dropdown-content-select" href="#">All Sizes&nbsp;</a>
-                    <a onClick={toggleFilter} id="s1" className="toggleSize" href="#">Personal&nbsp;&nbsp;</a>
-                    <a onClick={toggleFilter} id="s2" className="toggleSize" href="#">Medium&nbsp;&nbsp;</a>
-                    <a onClick={toggleFilter} id="s3" className="toggleSize" href="#">Large&nbsp;&nbsp;&nbsp;</a>
+                    <div onClick={toggleFilter} id="s0" className="toggleSize dropdown-content-select">All Sizes&nbsp;</div>
+                    <div onClick={toggleFilter} id="s1" className="toggleSize">Personal&nbsp;&nbsp;</div>
+                    <div onClick={toggleFilter} id="s2" className="toggleSize">Medium&nbsp;&nbsp;</div>
+                    <div onClick={toggleFilter} id="s3" className="toggleSize">Large&nbsp;&nbsp;&nbsp;</div>
                 </div>
             </div>
             <div className="dropdown">
                 <div className="dropdown-button" id="btnCakeType" onClick={toggleFilterMenu}>All Types&nbsp;&nbsp;&#8964;</div>
                 <div className="dropdown-content" id="listCakeType">
-                    <a onClick={toggleFilter} id="t0" className="toggleType dropdown-content-select" href="#">All Types&nbsp;</a>
-                    <a onClick={toggleFilter} id="t1" className="toggleType" href="#">Fruit&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                    <a onClick={toggleFilter} id="t2" className="toggleType" href="#">Vanilla&nbsp;&nbsp;&nbsp;</a>
-                    <a onClick={toggleFilter} id="t3" className="toggleType" href="#">Chocolate</a>
+                    <div onClick={toggleFilter} id="t0" className="toggleType dropdown-content-select">All Types&nbsp;</div>
+                    <div onClick={toggleFilter} id="t1" className="toggleType">Fruit&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div onClick={toggleFilter} id="t2" className="toggleType">Vanilla&nbsp;&nbsp;&nbsp;</div>
+                    <div onClick={toggleFilter} id="t3" className="toggleType">Chocolate</div>
                 </div>
             </div>
         </div>
