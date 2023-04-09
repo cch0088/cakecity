@@ -7,6 +7,8 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Login from './components/Login';
 import CakeMenu from './components/CakeMenu';
+import Delivery from './components/Delivery';
+import Contact from './components/Contact';
 
 import './App.css';
 
@@ -32,8 +34,6 @@ function App() {
 
   return (
     <div>
-      <Header />
-      <NavBar/>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -42,16 +42,24 @@ function App() {
           <Home />
         </Route>
         <Route path="/cakecity/order">
+          <Header />
+          <NavBar/>
           <Login />
         </Route>
         <Route path="/cakecity/delivery">
-          <Home />
+          <Header />
+          <NavBar/>
+          <Delivery />
         </Route>
         <Route path="/cakecity/menu">
+          <Header />
+          <NavBar/>
           <CakeMenu />
         </Route>
         <Route path="/cakecity/contact">
-          <Home />
+          <Header />
+          <NavBar/>
+          <Contact />
         </Route>
       </Switch>
       <Footer />
