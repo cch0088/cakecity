@@ -43,8 +43,8 @@ function CakeMenu() {
     }
 
 return(
-    <div className="content">
-        <div className="filter-nav">
+    <div id="content">
+        <div id="filter-nav">
             <div className="dropdown">
                 <div className="dropdown-button" id="btnCakeSize" onClick={toggleFilterMenu}>All Sizes&nbsp;&nbsp;&#8964;</div>
                 <div className="dropdown-content" id="listCakeSize">

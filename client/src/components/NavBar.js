@@ -4,7 +4,7 @@ import React from "react";
 function NavBar() {
 
 return(
-    <div className="navigation">
+    <div id="navigation">
         <NavLink to="/cakecity/order">Order Online</NavLink>
         <NavLink to="/cakecity/menu">Our Menu</NavLink>
         <NavLink to="/cakecity/delivery">Delivery</NavLink>
