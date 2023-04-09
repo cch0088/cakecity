@@ -5,14 +5,8 @@ function Login() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(""); 
     
-    function handleSubmit(event) {
-        let API = "/login";
-
-        if (event.target.name === "register")
-        {
-            API = "/register";
-        }
-        
+    function handleLogin(event) {
+        const API = "/login";
         if (username.length > 0 && password.length > 0)
         {
             setError("");
@@ -39,17 +33,6 @@ function Login() {
                     {
                         setError(data[key]);
                     }
-                    else if (key === 'username')
-                    {
-                        if (event.target.name === "register")
-                        {
-                            setError("Thanks for registering. Please log in.")
-                        }
-                        else
-                        {
-                            window.location.reload(false);
-                        }
-                    }
                 }
             })
         }
@@ -69,18 +52,14 @@ function Login() {
 
 return (
     <div className="content">
-        Greetings! Please sign into our reservation portal to get started. If you don't have an account, you can create one.
         <div className="login-form">
-            <form>
-                <div className="label">Username:</div>
-                <input className="field" type="text" name="username" onChange={handleUsername} value={username}/>
-                <div className="label">Password:</div>
-                <input className="field" type="password" name="password" onChange={handlePassword} value={password}/>
-                <input className="button" type="button" name="login" value="Log In" onClick={handleSubmit} />
-                <input className="button" type="button" name="register" value="Register" onClick={handleSubmit} />
-            </form>
-
-            {error}
+            <div className="title-label">SIGN IN</div>
+            {(error) ? <div className='error-label'>{error}</div> : null}
+            <div className="label">E-mail or Username</div>
+            <input className="field" type="text" name="username" onChange={handleUsername} value={username}/>
+            <div className="label">Password</div>
+            <input className="field" type="password" name="password" onChange={handlePassword} value={password}/>
+            <input className="button" type="button" name="login" value="Log In" onClick={handleLogin} />
         </div>
     </div>
     )
