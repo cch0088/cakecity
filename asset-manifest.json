@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cakecity/static/css/main.c4ff81aa.css",
-    "main.js": "/cakecity/static/js/main.6c1b54b8.js",
+    "main.js": "/cakecity/static/js/main.53cd042c.js",
     "static/js/787.50ff5f6f.chunk.js": "/cakecity/static/js/787.50ff5f6f.chunk.js",
     "index.html": "/cakecity/index.html",
     "main.c4ff81aa.css.map": "/cakecity/static/css/main.c4ff81aa.css.map",
-    "main.6c1b54b8.js.map": "/cakecity/static/js/main.6c1b54b8.js.map",
+    "main.53cd042c.js.map": "/cakecity/static/js/main.53cd042c.js.map",
     "787.50ff5f6f.chunk.js.map": "/cakecity/static/js/787.50ff5f6f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c4ff81aa.css",
-    "static/js/main.6c1b54b8.js"
+    "static/js/main.53cd042c.js"
   ]
 }
