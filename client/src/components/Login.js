@@ -51,7 +51,7 @@ function Login() {
     }
 
 return (
-    <div id="login-form">
+    <div id="site-form">
         <div className="title-label">SIGN IN</div>
         {(error) ? <div className='error-label'>{error}</div> : null}
         <div className="label">E-mail or Username</div>

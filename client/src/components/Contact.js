@@ -1,11 +1,11 @@
 import React from "react";
-import Login from "./Login";
+import ContactForm from './ContactForm'
 
 function Contact() {
 
 return(
-    <div id="content">
-        <Login />
+    <div id="contact-content">
+        <ContactForm />
     </div>
 )
 }
