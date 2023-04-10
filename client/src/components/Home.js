@@ -5,7 +5,7 @@ function Home() {
 
 return(
     <div id="home-content">
-        <img src="./logos/cakecitylogo.png" alt="Cake City Logo" />
+        <img src="./logos/cakecitylogo.png" onError={(e) => (e.target.src = "./cakecity/logos/cakecitylogo.png")} alt="Cake City Logo" />
         <div id="home-nav-container">
             <NavBar/>
         </div>
@@ -16,10 +16,10 @@ return(
                 You can check out our menu or place an order today and choose when you want it delivered.
                 Get your special cake today. Cakes are made to order with special options available.
             </div>
-            <div><img src="./cakes/thumbs/medium-chocolate-cake.png" alt="Chocolate Cake" /></div>
+            <div><img src="./cakes/thumbs/medium-chocolate-cake.png" onError={(e) => (e.target.src = "./cakecity/cakes/thumbs/medium-chocolate-cake.png")} alt="Chocolate Cake" /></div>
         </div>
         <div className="home-slide">
-            <div><img src="./cakes/thumbs/personal-fruit-cake.png" alt="Fruit Cake" /></div>
+            <div><img src="./cakes/thumbs/personal-fruit-cake.png" onError={(e) => (e.target.src = "./cakecity/cakes/thumbs/personal-fruit-cake.png")} alt="Fruit Cake" /></div>
             <div>You can have your cake and eat it too!</div>
         </div>
     </div>

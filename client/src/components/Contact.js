@@ -1,10 +1,11 @@
 import React from "react";
+import Login from "./Login";
 
 function Contact() {
 
 return(
     <div id="content">
-        Content here
+        <Login />
     </div>
 )
 }

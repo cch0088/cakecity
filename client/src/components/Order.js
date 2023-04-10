@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./Login";
 
-function Delivery() {
+function Order() {
 
 return(
     <div id="content">
@@ -9,4 +9,4 @@ return(
     </div>
 )
 }
-export default Delivery;
+export default Order;
