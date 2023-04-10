@@ -81,7 +81,7 @@ code {
   box-shadow: 0 0 10px 2px gray;
   text-shadow: 2px 2px 5px gray;
   font-family:cursive;
-  font-size: x-large;
+  font-size: large;
   text-align: right;
 }
 
@@ -151,12 +151,25 @@ code {
 }
 
 .home-slide {
-  display: inline-flex;
   margin-top: 20px;
   margin-bottom: 20px;
-  color: white;
-  border: 2px solid white;
-  width: 80%;
+  padding: 20px;
+  width: 40%;
+  background-image: linear-gradient(to right, aqua, antiquewhite);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: cursive;
+}
+
+.home-slide img {
+  width: 100%;
+}
+
+.caption {
+  font-size: x-large;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 #cakecard-container {
@@ -187,14 +200,14 @@ code {
   padding: 10px;
   background-color: rgba(140, 196, 248, 0.4);
   width: 220px;
-  height: 320px;
+  height: 300px;
   box-shadow: 0 0 10px 2px gray;
   text-shadow: 2px 2px 5px gray;
   align-items: center;
   display: flex;
   flex-direction: column;
   font-family:cursive;
-  font-size: x-large;
+  font-size: large;
 }
 
 .cakecard:hover {
