@@ -5,7 +5,7 @@ function Header() {
 
 return (
     <div id="heading">
-        <NavLink to="/">
+        <NavLink to="/cakecity">
             <img src="./logos/cakecitylogo.png" alt="Cake City Logo" />
         </NavLink>
     </div>
