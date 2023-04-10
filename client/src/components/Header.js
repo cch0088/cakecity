@@ -6,8 +6,7 @@ function Header() {
 return (
     <div id="heading">
         <NavLink to="/">
-            <img src="./cakecity/logos/cakecitylogo.png" alt="Cake City Logo" 
-            onError={(e) => (e.target.src = "./logos/cakecitylogo.png")}/>
+            <img src="./logos/cakecitylogo.png" alt="Cake City Logo" />
         </NavLink>
     </div>
     )
