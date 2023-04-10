@@ -154,7 +154,7 @@ code {
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 20px;
-  width: 40%;
+  width: 60%;
   background-image: linear-gradient(to right, aqua, antiquewhite);
   display: flex;
   flex-direction: column;
@@ -377,5 +377,8 @@ code {
   #home-nav-container {
     position: relative;
     left: auto;
+  }
+  .caption {
+    font-size: large;
   }
 }
