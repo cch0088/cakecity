@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 function CakeMenu() {
 
-    const API = "/cakecity/cakes";
+    const API = "https://my-json-server.typicode.com/cch0088/cakecity/cakes";
 
     const [cakes, setCakes] = useState([]);
     const [cakeSize, setCakeSize] = useState(0);

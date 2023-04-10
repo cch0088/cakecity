@@ -1,6 +1,5 @@
 {
   "name": "cakecity",
-  "proxy": "https://my-json-server.typicode.com/cch0088/cakecity",
   "version": "0.1.0",
   "homepage": "https://cch0088.github.io/cakecity",
   "private": true,
