@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 function CakeMenu() {
 
-    const API = "/cakes";
+    const API = "/cakecity/cakes";
 
     const [cakes, setCakes] = useState([]);
     const [cakeSize, setCakeSize] = useState(0);
