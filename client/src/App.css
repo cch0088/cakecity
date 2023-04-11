@@ -215,7 +215,19 @@ code {
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-family:cursive;
+  font-family: cursive;
+  font-size: large;
+}
+
+.cakecard-large {
+  margin: 12px;
+  padding: 10px;
+  background-color: rgba(140, 196, 248, 0.4);
+  box-shadow: 0 0 10px 2px gray;
+  text-shadow: 2px 2px 5px gray;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   font-size: large;
 }
 
