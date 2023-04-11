@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Order from './components/Order';
 import CakeMenu from './components/CakeMenu';
+import CakeBuilder from './components/CakeBuilder';
 import Delivery from './components/Delivery';
 import Contact from './components/Contact';
 
@@ -55,6 +56,11 @@ function App() {
           <Header />
           <NavBar/>
           <CakeMenu />
+        </Route>
+        <Route path="/cakecity/cakebuilder">
+          <Header />
+          <NavBar/>
+          <CakeBuilder />
         </Route>
         <Route path="/cakecity/contact">
           <Header />
