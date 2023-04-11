@@ -14,7 +14,8 @@ import Contact from './components/Contact';
 import './App.css';
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
+  const [buildCakeID, setBuildCakeID] = useState(0);
   
   // const login = "/check_login";
 
@@ -55,12 +56,12 @@ function App() {
         <Route path="/cakecity/menu">
           <Header />
           <NavBar/>
-          <CakeMenu />
+          <CakeMenu setBuildCakeID={setBuildCakeID} />
         </Route>
         <Route path="/cakecity/cakebuilder">
           <Header />
           <NavBar/>
-          <CakeBuilder />
+          <CakeBuilder buildCakeID={buildCakeID} />
         </Route>
         <Route path="/cakecity/contact">
           <Header />

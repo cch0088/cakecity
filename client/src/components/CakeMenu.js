@@ -2,7 +2,7 @@ import React from "react";
 import CakeCard from "./CakeCard";
 import { useState, useEffect } from "react";
 
-function CakeMenu() {
+function CakeMenu({setBuildCakeID}) {
 
     const API = "https://my-json-server.typicode.com/cch0088/cakecity/cakes";
 
@@ -69,7 +69,7 @@ return(
                 .filter(cake => (cakeSize > 0) ? cake.size === cakeSize : cake)
                 .filter(cake => (cakeType > 0) ? cake.base_type === cakeType : cake)
                 .map((cake, index) => {
-                    return <CakeCard key={index} {...cake} />;
+                    return <CakeCard key={index} {...cake} setBuildCakeID={setBuildCakeID} />;
                 })
             }
         </div>

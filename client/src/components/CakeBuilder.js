@@ -4,6 +4,8 @@ function CakeBuilder(props) {
 
 const image_url = "./cakes/thumbs/" + props.image;
 
+console.log(props.buildCakeID);
+
 return (
     <div id="content">
         <div className="cakecard" id={props.id}>
