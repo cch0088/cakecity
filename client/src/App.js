@@ -15,7 +15,7 @@ import './App.css';
 
 function App() {
   const [user, setUser] = useState();
-  const [buildCakeID, setBuildCakeID] = useState(0);
+  const [buildCakeID, setBuildCakeID] = useState(1);
   
   // const login = "/check_login";
 

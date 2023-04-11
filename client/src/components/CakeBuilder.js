@@ -8,7 +8,7 @@ function CakeBuilder(props) {
 
     useEffect(() => {
         fetch(API).then(resp => resp.json()).then(data => setCake(data));
-    }, []);
+    }, [API]);
 
     const image_url = "./cakes/thumbs/" + cake.image;
 
@@ -26,7 +26,7 @@ return (
             <div className="cakecard-text">Contents</div>
             <div>
                 <ul>
-                    {cake.contents.map((x) => <li>{x}</li>)}
+                    {(cake.contents) ? (cake.contents.map((x, i) => <li key={i}>{x}</li>)) : null}
                 </ul>
             </div>
         </div>
