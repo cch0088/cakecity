@@ -14,13 +14,6 @@ function CakeMenu({setBuildCakeID}) {
         fetch(API).then(resp => resp.json()).then(data => setCakes(data));
     }, []);
 
-    function toggleFilterMenu(e) {
-        const dropbtn = document.querySelector("#" + e.target.id);
-        const dropmenu = document.querySelector("#" + e.target.nextSibling.id);
-        dropmenu.classList.toggle("visible");
-        dropbtn.classList.toggle("dropdown-down");
-    }
-
     function toggleFilter(e) {
         const selectedItem = document.querySelector("." + e.target.className + ".dropdown-content-select");
         if (selectedItem)
@@ -46,7 +39,7 @@ return(
     <div id="content">
         <div id="filter-nav">
             <div className="dropdown">
-                <div className="dropdown-button" id="btnCakeSize" onClick={toggleFilterMenu}>All Sizes&nbsp;&nbsp;&#8964;</div>
+                <div className="dropdown-button" id="btnCakeSize">All Sizes&nbsp;&nbsp;&#8964;</div>
                 <div className="dropdown-content" id="listCakeSize">
                     <div onClick={toggleFilter} id="s0" className="toggleSize dropdown-content-select">All Sizes&nbsp;</div>
                     <div onClick={toggleFilter} id="s1" className="toggleSize">Personal&nbsp;&nbsp;</div>
@@ -55,7 +48,7 @@ return(
                 </div>
             </div>
             <div className="dropdown">
-                <div className="dropdown-button" id="btnCakeType" onClick={toggleFilterMenu}>All Types&nbsp;&nbsp;&#8964;</div>
+                <div className="dropdown-button" id="btnCakeType">All Types&nbsp;&nbsp;&#8964;</div>
                 <div className="dropdown-content" id="listCakeType">
                     <div onClick={toggleFilter} id="t0" className="toggleType dropdown-content-select">All Types&nbsp;</div>
                     <div onClick={toggleFilter} id="t1" className="toggleType">Fruit&nbsp;&nbsp;&nbsp;&nbsp;</div>

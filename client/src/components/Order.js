@@ -7,7 +7,7 @@ function Order() {
 
 return(
     <div id="content">
-        <Reset />
+        
     </div>
 )
 }
