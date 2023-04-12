@@ -54,10 +54,10 @@ return (
     <div id="site-form">
         <div className="title-label">SIGN IN</div>
         {(error) ? <div className='error-label'>{error}</div> : null}
-        <div className="label">E-mail or Username</div>
-        <input className="field" type="text" name="username" onChange={handleUsername} value={username}/>
-        <div className="label">Password</div>
-        <input className="field" type="password" name="password" onChange={handlePassword} value={password}/>
+        <div className="label-login">E-mail or Username</div>
+        <input className="field-login" type="text" name="username" onChange={handleUsername} value={username}/>
+        <div className="label-login">Password</div>
+        <input className="field-login" type="password" name="password" onChange={handlePassword} value={password}/>
         <a className="link-label" href="/cakecity/forgot">Forgot Password</a>
         <input className="button" type="button" name="login" value="Sign In" onClick={handleLogin} />
         <a className="link-label" href="/cakecity/register">Create Account</a>
