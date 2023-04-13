@@ -3,12 +3,30 @@
         {
             "id": 1,
             "username": "admin",
-            "password": "admin"
+            "password": "admin",
+            "firstname": "Admin",
+            "lastname": "User",
+            "address1": "100 Fake St",
+            "address2": "",
+            "city": "New York",
+            "state": "NY",
+            "zipcode": "10022",
+            "phone": "2122002222",
+            "email": "test@cake.net"
         },
         {
             "id": 2,
             "username": "test",
-            "password": "test"
+            "password": "test",
+            "firstname": "Test",
+            "lastname": "User",
+            "address1": "100 Fake St",
+            "address2": "",
+            "city": "New York",
+            "state": "NY",
+            "zipcode": "10022",
+            "phone": "2122002222",
+            "email": "test@cake.net"
         }
     ],
     "orders": [
