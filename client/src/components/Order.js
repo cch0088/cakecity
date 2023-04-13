@@ -7,7 +7,7 @@ function Order() {
 
 return(
     <div id="content">
-        Recent Orders
+        <h2>Recent Orders</h2>
         <div className="div-table">
             <div className="div-table-heading">
                 <div className="div-table-cell">Order Number</div>
