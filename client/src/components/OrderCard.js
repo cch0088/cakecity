@@ -18,6 +18,12 @@ function OrderCard(props) {
         fetch(API).then(resp => resp.json()).then(data => setCake(data));
     }, [API]);
 
+    function handleDelete(e) {
+        // Get Order ID
+        console.log(parseInt(e.target.parentNode.childNodes[0].children[1].textContent));
+        e.target.parentNode.remove();
+    }
+
 return(
     <div className="div-table">
         <div className="div-table-heading-title">
@@ -44,7 +50,7 @@ return(
             <div className="div-table-cell">Delivery Type</div>
             <div className="div-table-cell">{capName(props.delivery)}</div>
         </div>
-        <input className="button" type="button" name="login" value="Cancel Order" />
+        <input className="button" type="button" name="login" value="Cancel Order" onClick={handleDelete} />
     </div>
 )
 }
