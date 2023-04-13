@@ -20,7 +20,7 @@ function OrderCard(props) {
 
 return(
     <div className="div-table">
-        <div className="div-table-heading">
+        <div className="div-table-heading-title">
             <div className="div-table-cell">Order Number</div>
             <div className="div-table-cell">{props.id}</div>
         </div>
@@ -44,6 +44,7 @@ return(
             <div className="div-table-cell">Delivery Type</div>
             <div className="div-table-cell">{capName(props.delivery)}</div>
         </div>
+        <input className="button" type="button" name="login" value="Cancel Order" />
     </div>
 )
 }

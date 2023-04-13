@@ -376,6 +376,7 @@ code {
 }
 
 .div-table-heading-title {
+  background-color: lightblue;
   font-weight: bold;
   display: flex;
   flex-direction: row;
