@@ -21,6 +21,16 @@
             "delivery": "pickup",
             "created_at": "04/16/2023",
             "updated_at": "04/16/2023"
+        },
+        {
+            "id": 2,
+            "cake_id": 1,
+            "user_id": 2,
+            "total_price": 62.12,
+            "ready_date": "04/20/2023",
+            "delivery": "delivery",
+            "created_at": "04/16/2023",
+            "updated_at": "04/16/2023"
         }
     ],
     "cakes": [
