@@ -16,10 +16,11 @@
             "id": 1,
             "cake_id": 1,
             "user_id": 2,
-            "total_price": 30,
-            "make_on_date": "2/2/2024",
-            "created_at": "",
-            "updated_at": ""
+            "total_price": 42.50,
+            "ready_date": "04/20/2023",
+            "delivery": "pickup",
+            "created_at": "04/16/2023",
+            "updated_at": "04/16/2023"
         }
     ],
     "cakes": [
