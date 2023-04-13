@@ -50,7 +50,7 @@ return (
         {(error) ? <div className='error-label'>{error}</div> : null}
         <div className="label-login">E-mail</div>
         <input className="field-login" type="text" name="email" onChange={handleEmail} value={email}/>
-        <input className="button" type="button" name="login" value="Reset Password" onClick={handleReset} />
+        <input className="button" type="button" name="forgot" value="Reset Password" onClick={handleReset} />
     </div>
     )
 }

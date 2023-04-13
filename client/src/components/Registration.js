@@ -108,7 +108,7 @@ return (
             <div className="label">E-mail</div>
             <input className="field" type="text" name="email" onChange={(e) => setEmail(e.target.value)} value={email} />
         </div>
-        <input className="button" type="button" name="login" value="Create Account" onClick={handleRegistration} />
+        <input className="button" type="button" name="register" value="Create Account" onClick={handleRegistration} />
     </div>
     )
 }

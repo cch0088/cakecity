@@ -219,13 +219,46 @@ code {
   font-size: large;
 }
 
+#cakebuilder {
+  margin-top: 60px;
+  display: inline-flex;
+  justify-content: center;
+  width: 95%;
+}
+
+#builder-frame-large {
+  width: 50%;
+}
+
+#builder-frame-large img {
+  margin-top: 30px;
+  width: 100%;
+}
+
+#builder-frame-small {
+  width: 30%;
+}
+
 .cakecard-large {
+  margin: 12px;
+  padding: 10px;
+  height: 100%;
+  font-family: cursive;
+  background-color: rgba(140, 196, 248, 0.4);
+  box-shadow: 0 0 10px 2px gray;
+  text-shadow: 2px 2px 5px gray;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: x-large;
+}
+
+.cake-option {
   margin: 12px;
   padding: 10px;
   background-color: rgba(140, 196, 248, 0.4);
   box-shadow: 0 0 10px 2px gray;
   text-shadow: 2px 2px 5px gray;
-  align-items: center;
   display: flex;
   flex-direction: column;
   font-size: large;
