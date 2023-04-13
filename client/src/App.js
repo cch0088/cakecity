@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
+import Account from './components/Account';
 import Order from './components/Order';
 import CakeMenu from './components/CakeMenu';
 import CakeBuilder from './components/CakeBuilder';
@@ -42,6 +43,21 @@ function App() {
         </Route>
         <Route exact path="/cakecity">
           <Home />
+        </Route>
+        <Route path="/cakecity/login">
+          <Header />
+          <NavBar/>
+          <Account type={0} />
+        </Route>
+        <Route path="/cakecity/register">
+          <Header />
+          <NavBar/>
+          <Account type={1} />
+        </Route>
+        <Route path="/cakecity/forgot">
+          <Header />
+          <NavBar/>
+          <Account type={2} />
         </Route>
         <Route path="/cakecity/order">
           <Header />
