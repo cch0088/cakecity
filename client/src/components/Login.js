@@ -1,12 +1,12 @@
 import { React, useState } from 'react';
 
-function Login() {
+function Login(props) {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(""); 
     
     function handleLogin(event) {
-        const API = "/cakecity/login";
+        const API = props.API + "/login";
         if (username.length > 0 && password.length > 0)
         {
             setError("");

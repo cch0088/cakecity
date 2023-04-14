@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 
 import OrderCard from "./OrderCard";
 
-function Delivery() {
+function Delivery(props) {
 
-    const API = "https://my-json-server.typicode.com/cch0088/cakecity/orders";
+    const API = props.API + "/orders";
 
     const [orders, setOrders] = useState([]);
 
@@ -16,7 +16,7 @@ function Delivery() {
 return(
     <div id="content">
         <h2>Recent Orders</h2>
-        {orders.map((order, index) => <OrderCard key={index} {...order} />)}
+        {orders.map((order, index) => <OrderCard key={index} {...order} API={props.API} />)}
     </div>
 )
 }

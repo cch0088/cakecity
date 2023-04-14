@@ -17,6 +17,8 @@ import './App.css';
 function App() {
   const [user, setUser] = useState();
   const [buildCakeID, setBuildCakeID] = useState(1);
+
+  const API = "https://my-json-server.typicode.com/cch0088/cakecity";
   
   // const login = "/check_login";
 
@@ -47,17 +49,17 @@ function App() {
         <Route path="/cakecity/login">
           <Header />
           <NavBar/>
-          <Account type={0} />
+          <Account type={0} API={API} />
         </Route>
         <Route path="/cakecity/register">
           <Header />
           <NavBar/>
-          <Account type={1} />
+          <Account type={1} API={API} />
         </Route>
         <Route path="/cakecity/forgot">
           <Header />
           <NavBar/>
-          <Account type={2} />
+          <Account type={2} API={API} />
         </Route>
         <Route path="/cakecity/order">
           <Header />
@@ -67,17 +69,17 @@ function App() {
         <Route path="/cakecity/delivery">
           <Header />
           <NavBar/>
-          <Delivery />
+          <Delivery API={API} />
         </Route>
         <Route path="/cakecity/menu">
           <Header />
           <NavBar/>
-          <CakeMenu setBuildCakeID={setBuildCakeID} />
+          <CakeMenu setBuildCakeID={setBuildCakeID} API={API} />
         </Route>
         <Route path="/cakecity/cakebuilder">
           <Header />
           <NavBar/>
-          <CakeBuilder buildCakeID={buildCakeID} />
+          <CakeBuilder buildCakeID={buildCakeID} API={API} />
         </Route>
         <Route path="/cakecity/contact">
           <Header />

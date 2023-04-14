@@ -12,7 +12,7 @@ function RoundFloat(num) {
 function OrderCard(props) {
 
     const [cake, setCake] = useState([]);
-    const API = "https://my-json-server.typicode.com/cch0088/cakecity/cakes/" + props.cake_id;
+    const API = props.API + "/cakes/" + props.cake_id;
 
     useEffect(() => {
         fetch(API).then(resp => resp.json()).then(data => setCake(data));

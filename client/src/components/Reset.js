@@ -1,11 +1,11 @@
 import { React, useState } from 'react';
 
-function Reset() {
+function Reset(props) {
     const [email, setEmail] = useState("");
     const [error, setError] = useState(""); 
     
     function handleReset(event) {
-        const API = "/cakecity/reset";
+        const API = props.API + "/reset";
         if (email.length > 0)
         {
             setError("");

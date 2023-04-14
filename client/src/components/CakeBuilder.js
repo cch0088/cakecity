@@ -5,7 +5,7 @@ import { CapName, RoundFloat } from "./OrderCard";
 function CakeBuilder(props) {
 
     const [cake, setCake] = useState([]);
-    const API = "https://my-json-server.typicode.com/cch0088/cakecity/cakes/" + props.buildCakeID;
+    const API = props.API + "/cakes/" + props.buildCakeID;
 
     const [extraCost, setExtraCost] = useState(0);
     const salesTax = 1.08;

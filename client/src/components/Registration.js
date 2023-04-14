@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 
-function Registration() {
+function Registration(props) {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [firstname, setFirstName] = useState("");
@@ -15,7 +15,7 @@ function Registration() {
     const [error, setError] = useState(""); 
     
     function handleRegistration(e) {
-        const API = "/cakecity/register";
+        const API = props.API + "/register";
         if (username.length > 0 && password.length > 0)
         {
             setError("");
