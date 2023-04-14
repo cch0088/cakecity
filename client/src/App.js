@@ -18,24 +18,26 @@ function App() {
   const [user, setUser] = useState();
   const [buildCakeID, setBuildCakeID] = useState(1);
 
-  const API = "https://my-json-server.typicode.com/cch0088/cakecity";
+  const API = "https://my-json-server.typicode.com/cch0088/cakecity"; // for static site
+  // const API = "http://localhost:5555"; // for dynamic site
   
-  // const login = "/check_login";
+  const login = "/users/2"; // for static site
+  // const login = "/check_login"; // for dynamic site
 
-  // // Check log in status
-  // useEffect(() => {
-  //   fetch(login).then(
-  //     (resp) => {
-  //       if (resp.ok) {
-  //         resp.json().then(
-  //           (user) => {
-  //             setUser(user)
-  //           }
-  //         );
-  //       }
-  //     }
-  //   )
-  // }, []);
+  // Check log in status
+  useEffect(() => {
+    fetch(API + login).then(
+      (resp) => {
+        if (resp.ok) {
+          resp.json().then(
+            (user) => {
+              setUser(user)
+            }
+          );
+        }
+      }
+    )
+  }, []);
 
   return (
     <div>

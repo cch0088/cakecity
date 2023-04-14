@@ -37,6 +37,8 @@
             "total_price": 42.50,
             "ready_date": "04/20/2023",
             "delivery": "pickup",
+            "options": ["birthday", "candle", "wrap", "photo"],
+            "bday_age": 20,
             "created_at": "04/16/2023",
             "updated_at": "04/16/2023"
         },
@@ -47,6 +49,8 @@
             "total_price": 62.12,
             "ready_date": "04/20/2023",
             "delivery": "delivery",
+            "options": ["birthday", "candle"],
+            "bday_age": 30,
             "created_at": "04/16/2023",
             "updated_at": "04/16/2023"
         }

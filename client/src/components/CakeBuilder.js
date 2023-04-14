@@ -5,6 +5,7 @@ import { CapName, RoundFloat } from "./OrderCard";
 function CakeBuilder(props) {
 
     const [cake, setCake] = useState([]);
+    const [readyDate, setReadyDate] = useState(new Date().toISOString().slice(0, 10));
     const API = props.API + "/cakes/" + props.buildCakeID;
 
     const [extraCost, setExtraCost] = useState(0);
@@ -22,6 +23,8 @@ function CakeBuilder(props) {
         else {setExtraCost(extraCost - price);}
     }
 
+    let final_price = RoundFloat((extraCost+cake.base_price)*salesTax);
+
     function handleWriting(e)
     {
         priceCalc(e.target.checked, 3.28);
@@ -30,6 +33,7 @@ function CakeBuilder(props) {
     function handleCandles(e)
     {
         priceCalc(e.target.checked, 6.35);
+        document.getElementById('3').classList.toggle('hidden');
     }
 
     function handleGiftwrap(e)
@@ -42,13 +46,53 @@ function CakeBuilder(props) {
         priceCalc(e.target.checked, 5.99);
     }
 
-    function handleSubmit(e)
+    function handleDateChange(e)
     {
-        
+        setReadyDate(e.target.value);
     }
 
+    function handleSubmit(e)
+    {
+        let cakeOptions = [];
+        let deliveryOption = "delivery";
+        let age = document.getElementById('age').value;
 
-    
+        if (age === "") {
+            age = 0;
+        }
+        else {
+            age = parseInt(age);
+        }
+
+        if (document.getElementById('c1').checked) {
+            cakeOptions.push('birthday');
+        }
+        if (document.getElementById('c2').checked) {
+            cakeOptions.push('candle');
+        }
+        if (document.getElementById('c3').checked) {
+            cakeOptions.push('wrap');
+        }
+        if (document.getElementById('c4').checked) {
+            cakeOptions.push('photo');
+        }
+        if (document.getElementById('c5').checked) {
+            deliveryOption = "pickup";
+        }
+
+        let newOrder = {
+            "cake_id": cake.id,
+            "user_id": 2,
+            "total_price": final_price,
+            "ready_date": readyDate,
+            "delivery": deliveryOption,
+            "options": cakeOptions,
+            "bday_age": age
+        }
+
+        console.log(newOrder);
+    }
+
 return (
     <div id="content">
         <div id="cakebuilder">
@@ -81,11 +125,15 @@ return (
                             <input className="checkbox" type="checkbox" id="c2" onChange={handleCandles} />
                             Add age candles
                         </div>
-                        <div id="3" className="checkbox-text">
+                        <div id="3" className="checkbox-test hidden">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Age&nbsp;
+                            <input id="age" type="number" min="1" max="150" className="checkbox" />
+                        </div>
+                        <div id="4" className="checkbox-text">
                             <input className="checkbox" type="checkbox" id="c3" onChange={handleGiftwrap}/>
                             Add gift wrap
                         </div>
-                        <div id="4" className="checkbox-text">
+                        <div id="5" className="checkbox-text">
                             <input className="checkbox" type="checkbox" id="c4" onChange={handlePhoto}/>
                             Add photo
                         </div>
@@ -94,16 +142,16 @@ return (
                 <div className="cake-option">
                     <div className="cakecard-text">
                         Desired ready date
-                        <input className="button" type="date" name="date" value={new Date().toISOString().slice(0, 10)} />
+                        <input className="button" type="date" name="date" defaultValue={readyDate} onChange={handleDateChange} />
                     </div>
                 </div>
                 <div className="cake-option">
-                    <div id="4" className="checkbox-text">
-                        <input className="checkbox" type="checkbox" id="c4" />
+                    <div id="6" className="checkbox-text">
+                        <input className="checkbox" type="checkbox" id="c5" />
                         Check here for local pickup
                     </div>
                     <div className="cakecard-text">
-                        Order total: ${RoundFloat((extraCost+cake.base_price)*salesTax)}
+                        Order total: ${final_price}
                         <input className="button" type="button" name="submit" value="Submit Order" onClick={handleSubmit} />
                     </div>
                 </div>

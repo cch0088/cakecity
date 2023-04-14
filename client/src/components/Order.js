@@ -1,10 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 function Order() {
 
-return(
-    <div id="content">
-    </div>
-)
+    let history = useHistory();
+
+    
 }
 export default Order;
