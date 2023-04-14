@@ -7,32 +7,39 @@ function CakeBuilder(props) {
     const [cake, setCake] = useState([]);
     const API = "https://my-json-server.typicode.com/cch0088/cakecity/cakes/" + props.buildCakeID;
 
+    const [extraCost, setExtraCost] = useState(0);
+    const salesTax = 1.08;
+
     useEffect(() => {
         fetch(API).then(resp => resp.json()).then(data => setCake(data));
     }, [API]);
     
-    let total_price = RoundFloat(cake.base_price);
-
     const image_url = "./cakes/full/" + cake.image;
+
+    function priceCalc(condition, price)
+    {
+        if (condition) {setExtraCost(extraCost + price);}
+        else {setExtraCost(extraCost - price);}
+    }
 
     function handleWriting(e)
     {
-
+        priceCalc(e.target.checked, 3.28);
     }
 
     function handleCandles(e)
     {
-
+        priceCalc(e.target.checked, 6.35);
     }
 
     function handleGiftwrap(e)
     {
-
+        priceCalc(e.target.checked, 4.25);
     }
 
-    function handlePicture(e)
+    function handlePhoto(e)
     {
-
+        priceCalc(e.target.checked, 5.99);
     }
 
     function handleSubmit(e)
@@ -41,6 +48,7 @@ function CakeBuilder(props) {
     }
 
 
+    
 return (
     <div id="content">
         <div id="cakebuilder">
@@ -66,32 +74,36 @@ return (
                     <div className="cakecard-text">Personalize</div>
                     <div>
                         <div id="1" className="checkbox-text">
-                            <input className="checkbox" type="checkbox" id="c1" />
-                            Add writing
+                            <input className="checkbox" type="checkbox" id="c1" onChange={handleWriting} />
+                            Add Happy Birthday text
                         </div>
                         <div id="2" className="checkbox-text">
-                            <input className="checkbox" type="checkbox" id="c2" />
-                            Add candles
+                            <input className="checkbox" type="checkbox" id="c2" onChange={handleCandles} />
+                            Add age candles
                         </div>
                         <div id="3" className="checkbox-text">
-                            <input className="checkbox" type="checkbox" id="c3" />
+                            <input className="checkbox" type="checkbox" id="c3" onChange={handleGiftwrap}/>
                             Add gift wrap
                         </div>
                         <div id="4" className="checkbox-text">
-                            <input className="checkbox" type="checkbox" id="c4" />
-                            Add picture
+                            <input className="checkbox" type="checkbox" id="c4" onChange={handlePhoto}/>
+                            Add photo
                         </div>
                     </div>
                 </div>
                 <div className="cake-option">
                     <div className="cakecard-text">
-                        Desired delivery date
-                        <input className="button" type="date" name="date" />
+                        Desired ready date
+                        <input className="button" type="date" name="date" value={new Date().toISOString().slice(0, 10)} />
                     </div>
                 </div>
                 <div className="cake-option">
+                    <div id="4" className="checkbox-text">
+                        <input className="checkbox" type="checkbox" id="c4" />
+                        Check here for local pickup
+                    </div>
                     <div className="cakecard-text">
-                        Order total: ${total_price}
+                        Order total: ${RoundFloat((extraCost+cake.base_price)*salesTax)}
                         <input className="button" type="button" name="submit" value="Submit Order" onClick={handleSubmit} />
                     </div>
                 </div>
