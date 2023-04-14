@@ -11,7 +11,7 @@ function Delivery(props) {
 
     useEffect(() => {
         fetch(API).then(resp => resp.json()).then(data => setOrders(data));
-    }, []);
+    }, [API]);
 
 return(
     <div id="content">

@@ -12,7 +12,7 @@ function CakeMenu(props) {
 
     useEffect(() => {
         fetch(API).then(resp => resp.json()).then(data => setCakes(data));
-    }, []);
+    }, [API]);
 
     function toggleFilter(e) {
         const selectedItem = document.querySelector("." + e.target.className + ".dropdown-content-select");
