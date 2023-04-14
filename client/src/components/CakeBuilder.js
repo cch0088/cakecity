@@ -10,13 +10,36 @@ function CakeBuilder(props) {
     useEffect(() => {
         fetch(API).then(resp => resp.json()).then(data => setCake(data));
     }, [API]);
+    
+    let total_price = RoundFloat(cake.base_price);
 
     const image_url = "./cakes/full/" + cake.image;
+
+    function handleWriting(e)
+    {
+
+    }
+
+    function handleCandles(e)
+    {
+
+    }
+
+    function handleGiftwrap(e)
+    {
+
+    }
+
+    function handlePicture(e)
+    {
+
+    }
 
     function handleSubmit(e)
     {
         
     }
+
 
 return (
     <div id="content">
@@ -42,15 +65,33 @@ return (
                 <div className="cake-option">
                     <div className="cakecard-text">Personalize</div>
                     <div>
-                        <ul>
-                            <li>Add candles</li>
-                            <li>Add text</li>
-                        </ul>
+                        <div id="1" className="checkbox-text">
+                            <input className="checkbox" type="checkbox" id="c1" />
+                            Add writing
+                        </div>
+                        <div id="2" className="checkbox-text">
+                            <input className="checkbox" type="checkbox" id="c2" />
+                            Add candles
+                        </div>
+                        <div id="3" className="checkbox-text">
+                            <input className="checkbox" type="checkbox" id="c3" />
+                            Add gift wrap
+                        </div>
+                        <div id="4" className="checkbox-text">
+                            <input className="checkbox" type="checkbox" id="c4" />
+                            Add picture
+                        </div>
                     </div>
                 </div>
                 <div className="cake-option">
                     <div className="cakecard-text">
-                        Order total: ${RoundFloat(cake.base_price)}
+                        Desired delivery date
+                        <input className="button" type="date" name="date" />
+                    </div>
+                </div>
+                <div className="cake-option">
+                    <div className="cakecard-text">
+                        Order total: ${total_price}
                         <input className="button" type="button" name="submit" value="Submit Order" onClick={handleSubmit} />
                     </div>
                 </div>
