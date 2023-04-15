@@ -1,5 +1,5 @@
 from app import app
-from models import db, Boat, Time, BoatTime
+from models import db
 import random
 
 

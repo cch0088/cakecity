@@ -4,18 +4,35 @@ from flask_bcrypt import Bcrypt
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 
-#  User Table
 class User(db.Model):
    __tablename__ = 'users'
 
    id = db.Column(db.Integer, primary_key = True)
    username = db.Column(db.String, unique = True, nullable = False)
    password = db.Column(db.String, nullable = False)
+   firstname = db.Column(db.String)
+   lastname = db.Column(db.String)
+   address1 = db.Column(db.String)
+   address2 = db.Column(db.String)
+   city = db.Column(db.String)
+   state = db.Column(db.String)
+   zipcode = db.Column(db.String)
+   phone = db.Column(db.String)
+   email = db.Column(db.String)
 
    def to_dict(self):
       return {
          "id": self.id,
-         "username": self.username
+         "username": self.username,
+         "firstname": self.firstname,
+         "lastname": self.lastname,
+         "address1": self.address1,
+         "address2": self.address2,
+         "city": self.city,
+         "state": self.state,
+         "zipcode": self.zipcode,
+         "phone": self.phone,
+         "email": self.email
       }
    
    def hash(self, password):
@@ -26,74 +43,104 @@ class User(db.Model):
 
    password_hash = property(authenticate, hash)
 
-# BOAT table
-class Boat(db.Model):
-   __tablename__ = 'boats'
+class Cake(db.Model):
+   __tablename__ = 'cakes'
    
    id = db.Column(db.Integer, primary_key = True)
    name = db.Column(db.String, nullable = False)
-   capacity = db.Column(db.Integer, nullable = False)
+   size = db.Column(db.Integer)
+   image = db.Column(db.String)
+   base_type = db.Column(db.Integer)
+   base_price = db.Column(db.Float)
 
-   boat_times = db.relationship('BoatTime', backref = 'boat')
+   contents = db.relationship('CakeContents', backref = 'cake')
 
    def to_dict(self):
       return {
          "id": self.id,
          "name": self.name,
-         "capacity": self.capacity
+         "size": self.size,
+         "image": self.image,
+         # "contents": [content.to_dict() for content in contents],
+         "base_type": self.base_type,
+         "base_price": self.base_price
       }
+   
+class Content(db.Model):
+   __tablename__ = 'contents'
 
-   def to_dict_with_times(self):
-      times = [bt.time for bt in self.boat_times]
+   id = db.Column(db.Integer)
+   name = db.Column(db.String)
+
+   def to_dict(self):
       return {
          "id": self.id,
-         "name": self.name,
-         "capacity": self.capacity,
-         "times": [time.to_dict() for time in times]
+         "name": self.name
       }
-      
-# Times table
-class Time(db.Model):
-   __tablename__ = 'times'
    
-   id = db.Column(db.Integer, primary_key = True)
-   hour = db.Column(db.String, nullable = False)
-   day = db.Column(db.String, nullable = False)
+class CakeContent(db.Model):
+   __tablename__ = 'cakecontents'
 
-   boat_times = db.relationship('BoatTime', backref = 'time')
+   id = db.Column(db.Integer)
+   cake_id = db.Column(db.Integer)
+   content_id = db.Column(db.Integer)
+   name = db.Column(db.String)
 
    def to_dict(self):
-    return {
-       "id": self.id,
-       "hour": self.hour,
-       "day": self.day
-    }
-    
-   def to_dict_with_boats(self):
-    boats = [bt.boat for bt in self.boat_times]
-    return {
-       "id": self.id,
-       "hour": self.hour,
-       "day": self.day,
-       "boats": [boat.to_dict() for boat in boats]
-    }
-
-# BoatTimes table
-class BoatTime(db.Model):
-   __tablename__ = 'boat_times'
+      return {
+         "id": self.id,
+         "cake_id": self.cake_id,
+         "content_id": self.content_id,
+         "name": self.name
+      }
    
-   id = db.Column(db.Integer, primary_key = True)
-   price = db.Column(db.Integer, nullable = False)
-   reserved = db.Column(db.String)
- 
-   boat_id = db.Column(db.Integer, db.ForeignKey('boats.id'), nullable  = False)
-   time_id = db.Column(db.Integer, db.ForeignKey('times.id'), nullable  = False)
+class Order(db.Model):
+   __tablename__ = 'orders'
+
+   id = db.Column(db.Integer)
+   cake_id = db.Column(db.Integer)
+   user_id = db.Column(db.Integer)
+   total_price = db.Column(db.Float)
+   ready_date = db.Column(db.DateTime)
+   delivery = db.Column(db.String)
+   bday_age = db.Column(db.Integer)
+   created_at = db.Column(db.DateTime)
+   updated_at = db.Column(db.DateTime)
 
    def to_dict(self):
-       return {
-          "id": self.id,
-          "boat_id": self.boat_id,
-          "time_id": self.time_id,
-          "price": self.price,
-          "reserved": self.reserved
-       }
+      return {
+         "id": self.id,
+         "cake_id": self.cake_id,
+         "user_id": self.user_id,
+         "total_price": self.total_price,
+         "ready_date": self.ready_date,
+         "delivery": self.delivery,
+         # "options": [option.to_dict() for option in options],
+         "bday_age": self.bday_age,
+         "created_at": self.created_at,
+         "updated_at": self.updated_at
+      }
+   
+class Option(db.Model):
+   __tablename__ = 'options'
+
+   id = db.Column(db.Integer)
+   name = db.Column(db.String)
+
+   def to_dict(self):
+      return {
+         "id": self.id,
+         "name": self.name
+      }
+
+class OrderOption(db.Model):
+   __tablename__ = 'orderoptions'
+
+   id = db.Column(db.Integer)
+   
+   def to_dict(self):
+      return {
+         "id": self.id
+      }
+   
+   
