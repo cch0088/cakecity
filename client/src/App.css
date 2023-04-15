@@ -524,4 +524,7 @@ code {
   #builder-frame-small {
     width: 100%;
   }
+  .div-table-cell {
+    width: 160px;
+  }
 }
