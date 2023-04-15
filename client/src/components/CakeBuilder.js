@@ -63,7 +63,7 @@ function CakeBuilder(props) {
         else {
             age = parseInt(age);
         }
-
+        
         if (document.getElementById('c1').checked) {
             cakeOptions.push('birthday');
         }

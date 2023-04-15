@@ -22,6 +22,26 @@ code {
   padding-bottom: 4px;
 }
 
+#userbar {
+  color: antiquewhite;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-weight: bold;
+  font-size: small;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logout {
+  margin: 2px;
+  cursor: pointer;
+}
+
+.logout:hover {
+  box-shadow: 0 0 10px 2px gray;
+}
+
 #heading img {
   width: 200px;
 }
@@ -443,7 +463,10 @@ code {
 
 @media screen and (max-width: 1024px) {
   body {
-    padding-top: 20px;
+    padding-top: 30px;
+  }
+  #userbar {
+    left: 10px;
   }
   #heading {
     position: relative;
