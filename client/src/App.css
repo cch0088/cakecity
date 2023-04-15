@@ -468,10 +468,16 @@ code {
 
 @media screen and (max-width: 1024px) {
   body {
-    padding-top: 30px;
+    padding-top: 6px;
   }
   #userbar {
-    left: 10px;
+    position: relative;
+    justify-content: right;
+    margin-left: 20px;
+  }
+  #parent-head {
+    display: flex;
+    flex-direction: column;
   }
   #heading {
     position: relative;
@@ -479,6 +485,8 @@ code {
     flex-direction: column;
     justify-content: center;
     padding-bottom: 4px;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
   #heading img {
     height: 90px;

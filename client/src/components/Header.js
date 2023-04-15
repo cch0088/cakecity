@@ -20,13 +20,13 @@ function Header({setUser}) {
     }
 
 return (
-    <div>
+    <div id="parent-head">
+        {(user) ? <div id="userbar">{user.username}&nbsp;<div className="logout" onClick={handleLogout}>↪️</div></div> : null}
         <div id="heading">
             <NavLink to="/cakecity">
                 <img src="./logos/cakecitylogo.png" alt="Cake City Logo" />
             </NavLink>
         </div>
-        {(user) ? <div id="userbar">Logged in as {user.username}&nbsp;<div className="logout" onClick={handleLogout}>↪️</div></div> : null}
     </div>
     )
 }
