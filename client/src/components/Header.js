@@ -10,7 +10,13 @@ function Header({setUser}) {
 
     function handleLogout() {
         setUser(null);
-        history.push("/cakecity/login");
+
+        const API = "/logout";
+        const API_OPT = {
+          method: 'DELETE'
+        };
+  
+        fetch(API, API_OPT).then(history.push("/cakecity/login"));
     }
 
 return (
@@ -20,7 +26,7 @@ return (
                 <img src="./logos/cakecitylogo.png" alt="Cake City Logo" />
             </NavLink>
         </div>
-        {(user) ? <div id="userbar">{user.username}&nbsp;<div className="logout" onClick={handleLogout}>↪️</div></div> : null}
+        {(user) ? <div id="userbar">Logged in as {user.username}&nbsp;<div className="logout" onClick={handleLogout}>↪️</div></div> : null}
     </div>
     )
 }

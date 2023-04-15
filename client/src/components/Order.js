@@ -1,16 +1,17 @@
-import { React, useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from '../App'
-import Account from "./Account";
+import { useHistory } from "react-router-dom";
 
-function Order(props) {
+function Order() {
 
     const user = useContext(UserContext);
+    const history = useHistory();
 
     if (user) {
-        return <div id="content"></div>;
+        history.push("/cakecity/menu");
     }
     else {
-        return <Account type={0} API={props.API} />;
+        history.push("/cakecity/login");
     }
 }
 export default Order;

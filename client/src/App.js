@@ -53,43 +53,43 @@ function App() {
             <Home />
           </Route>
           <Route path="/cakecity/login">
-            <Header setUser={setUser}/>
-            <NavBar/>
+            <Header setUser={setUser} />
+            <NavBar />
             <Account type={0} API={API} />
           </Route>
           <Route path="/cakecity/register">
-            <Header setUser={setUser}/>
-            <NavBar/>
+            <Header setUser={setUser} />
+            <NavBar />
             <Account type={1} API={API} />
           </Route>
           <Route path="/cakecity/forgot">
             <Header setUser={setUser}/>
-            <NavBar/>
+            <NavBar />
             <Account type={2} API={API} />
           </Route>
           <Route path="/cakecity/order">
-            <Header setUser={setUser}/>
-            <NavBar/>
-            <Order API={API} />
+            <Header setUser={setUser} />
+            <NavBar />
+            <Order />
           </Route>
           <Route path="/cakecity/delivery">
-            <Header setUser={setUser}/>
+            <Header setUser={setUser} />
             <NavBar/>
             <Delivery API={API} />
           </Route>
           <Route path="/cakecity/menu">
             <Header setUser={setUser}/>
-            <NavBar/>
+            <NavBar />
             <CakeMenu setBuildCakeID={setBuildCakeID} API={API} />
           </Route>
           <Route path="/cakecity/cakebuilder">
             <Header setUser={setUser}/>
-            <NavBar/>
+            <NavBar />
             <CakeBuilder buildCakeID={buildCakeID} API={API} />
           </Route>
           <Route path="/cakecity/contact">
-            <Header setUser={setUser}/>
-            <NavBar/>
+            <Header setUser={setUser} />
+            <NavBar />
             <Contact />
           </Route>
         </UserContext.Provider>

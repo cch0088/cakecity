@@ -1,15 +1,24 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from '../App';
 
 function CakeCard(props) {
 
 const image_url = "./cakes/thumbs/" + props.image;
-
-let history = useHistory();
+const user = useContext(UserContext);
+const history = useHistory();
 
 function selectCake(e) {
-    props.setBuildCakeID(e.target.id);
-    history.push("/cakecity/cakebuilder");
+    if (user)
+    {
+        props.setBuildCakeID(e.target.id);
+        history.push("/cakecity/cakebuilder");
+    }
+    else
+    {
+        history.push("/cakecity/login");
+    }
 }
 
 return (

@@ -26,7 +26,7 @@ code {
   color: antiquewhite;
   position: absolute;
   top: 10px;
-  right: 20px;
+  right: 10px;
   font-weight: bold;
   font-size: small;
   display: inline-flex;
@@ -36,6 +36,11 @@ code {
 .logout {
   margin: 2px;
   cursor: pointer;
+  font-size: large;
+}
+
+.age {
+  margin-left: 70px;
 }
 
 .logout:hover {

@@ -1,12 +1,16 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { CapName, RoundFloat } from "./OrderCard";
+import { UserContext } from '../App';
 
 function CakeBuilder(props) {
 
+    const history = useHistory();
     const [cake, setCake] = useState([]);
     const [readyDate, setReadyDate] = useState(new Date().toISOString().slice(0, 10));
     const API = props.API + "/cakes/" + props.buildCakeID;
+    const user = useContext(UserContext);
 
     const [extraCost, setExtraCost] = useState(0);
     const salesTax = 1.08;
@@ -34,6 +38,12 @@ function CakeBuilder(props) {
     {
         priceCalc(e.target.checked, 6.35);
         document.getElementById('3').classList.toggle('hidden');
+        if (e.target.checked) {
+            document.getElementById('age').value = 10;
+        }
+        else {
+            document.getElementById('age').value = 0;
+        }
     }
 
     function handleGiftwrap(e)
@@ -80,9 +90,9 @@ function CakeBuilder(props) {
             deliveryOption = "pickup";
         }
 
-        let newOrder = {
+        const newOrder = {
             "cake_id": cake.id,
-            "user_id": 2,
+            "user_id": user.id,
             "total_price": final_price,
             "ready_date": readyDate,
             "delivery": deliveryOption,
@@ -90,7 +100,15 @@ function CakeBuilder(props) {
             "bday_age": age
         }
 
-        console.log(newOrder);
+        const API_OPT = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newOrder)
+        }
+
+        fetch(API, API_OPT).then(resp => resp.json()).then(history.push("/cakecity/delivery"));
     }
 
 return (
@@ -125,9 +143,9 @@ return (
                             <input className="checkbox" type="checkbox" id="c2" onChange={handleCandles} />
                             Add age candles
                         </div>
-                        <div id="3" className="checkbox-test hidden">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Age&nbsp;
-                            <input id="age" type="number" min="1" max="150" className="checkbox" />
+                        <div id="3" className="checkbox-test hidden">
+                        <div className="age">Age&nbsp;
+                            <input id="age" type="number" min="1" max="150" className="checkbox" /></div>
                         </div>
                         <div id="4" className="checkbox-text">
                             <input className="checkbox" type="checkbox" id="c3" onChange={handleGiftwrap}/>
@@ -152,7 +170,9 @@ return (
                     </div>
                     <div className="cakecard-text">
                         Order total: ${final_price}
-                        <input className="button" type="button" name="submit" value="Submit Order" onClick={handleSubmit} />
+                        {(user) 
+                        ? <input className="button" type="button" name="submit" value="Submit Order" onClick={handleSubmit} /> 
+                        : <input className="button" type="button" name="submit" value="Submit Order" disabled />}
                     </div>
                 </div>
             </div>
