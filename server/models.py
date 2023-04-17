@@ -78,6 +78,8 @@ class Content(db.Model):
    id = db.Column(db.Integer, primary_key = True)
    name = db.Column(db.String)
 
+   cakes = db.relationship('CakeContent', backref = 'Content')
+
    def to_dict(self):
       return {
          "id": self.id,
