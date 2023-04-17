@@ -67,7 +67,7 @@ class Cake(db.Model):
          "name": self.name,
          "size": self.size,
          "image": self.image,
-         "contents": [content.item() for content in contents],
+         "contents": [content.to_dict() for content in contents],
          "base_type": self.base_type,
          "base_price": self.base_price
       }
@@ -76,12 +76,12 @@ class Content(db.Model):
    __tablename__ = 'contents'
 
    id = db.Column(db.Integer, primary_key = True)
-   item = db.Column(db.String)
+   name = db.Column(db.String)
 
    def to_dict(self):
       return {
          "id": self.id,
-         "item": self.item
+         "name": self.name
       }
    
 class CakeContent(db.Model):
@@ -90,19 +90,14 @@ class CakeContent(db.Model):
    id = db.Column(db.Integer, primary_key = True)
    cake_id = db.Column(db.Integer, db.ForeignKey('cakes.id'))
    content_id = db.Column(db.Integer, db.ForeignKey('contents.id'))
-   item = db.Column(db.String)
+   name = db.Column(db.String)
 
    def to_dict(self):
       return {
          "id": self.id,
          "cake_id": self.cake_id,
          "content_id": self.content_id,
-         "item": self.item
-      }
-   
-   def item(self):
-      return {
-         self.item
+         "name": self.name
       }
    
 class Order(db.Model):
@@ -129,7 +124,7 @@ class Order(db.Model):
          "total_price": self.total_price,
          "ready_date": self.ready_date,
          "delivery": self.delivery,
-         "options": [option.item() for option in options],
+         "options": [option.to_dict() for option in options],
          "bday_age": self.bday_age,
          "created_at": self.created_at,
          "updated_at": self.updated_at
@@ -140,17 +135,11 @@ class Option(db.Model):
 
    id = db.Column(db.Integer, primary_key = True)
    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
-   item = db.Column(db.String)
+   name = db.Column(db.String)
 
    def to_dict(self):
       return {
          "id": self.id,
-         "item": self.item
+         "name": self.name
       }
-   
-   def item(self):
-      return {
-         self.item
-      }
-
    
