@@ -1,6 +1,6 @@
 from flask import Flask, make_response, jsonify, request, session
 from flask_migrate import Migrate
-from models import db, Boat, Time, BoatTime, User
+from models import db, User
 
 app = Flask(__name__)
 
