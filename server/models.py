@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from sqlalchemy.sql import func
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -19,6 +20,10 @@ class User(db.Model):
    zipcode = db.Column(db.String)
    phone = db.Column(db.String)
    email = db.Column(db.String)
+   created_at = db.Column(db.DateTime, server_default=func.now())
+   updated_at = db.Column(db.DateTime, onupdate=func.now())
+
+   orders = db.relationship('Order', backref='User')
 
    def to_dict(self):
       return {
@@ -53,7 +58,7 @@ class Cake(db.Model):
    base_type = db.Column(db.Integer)
    base_price = db.Column(db.Float)
 
-   contents = db.relationship('CakeContents', backref = 'cake')
+   contents = db.relationship('CakeContent', backref = 'Cake')
 
    def to_dict(self):
       contents = [x.content for x in self.cakecontents]
@@ -83,8 +88,8 @@ class CakeContent(db.Model):
    __tablename__ = 'cakecontents'
 
    id = db.Column(db.Integer, primary_key = True)
-   cake_id = db.Column(db.Integer)
-   content_id = db.Column(db.Integer)
+   cake_id = db.Column(db.Integer, db.ForeignKey('cakes.id'))
+   content_id = db.Column(db.Integer, db.ForeignKey('contents.id'))
    item = db.Column(db.String)
 
    def to_dict(self):
@@ -104,16 +109,16 @@ class Order(db.Model):
    __tablename__ = 'orders'
 
    id = db.Column(db.Integer, primary_key = True)
-   cake_id = db.Column(db.Integer)
-   user_id = db.Column(db.Integer)
+   cake_id = db.Column(db.Integer, db.ForeignKey('cakes.id'))
+   user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
    total_price = db.Column(db.Float)
    ready_date = db.Column(db.DateTime)
    delivery = db.Column(db.String)
    bday_age = db.Column(db.Integer)
-   created_at = db.Column(db.DateTime)
-   updated_at = db.Column(db.DateTime)
+   created_at = db.Column(db.DateTime, server_default=func.now())
+   updated_at = db.Column(db.DateTime, onupdate=func.now())
 
-   options = db.relationship('OrderOptions', backref = 'order')
+   options = db.relationship('Option', backref = 'Order')
 
    def to_dict(self):
       options = [x.option for x in self.orderoptions]
@@ -134,6 +139,7 @@ class Option(db.Model):
    __tablename__ = 'options'
 
    id = db.Column(db.Integer, primary_key = True)
+   order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
    item = db.Column(db.String)
 
    def to_dict(self):
@@ -147,18 +153,4 @@ class Option(db.Model):
          self.item
       }
 
-class OrderOption(db.Model):
-   __tablename__ = 'orderoptions'
-
-   id = db.Column(db.Integer, primary_key = True)
-   cake_id = db.Column(db.Integer)
-   option_id = db.Column(db.Integer)
-   
-   def to_dict(self):
-      return {
-         "id": self.id,
-         "cake_id": self.cake_id,
-         "option_id": self.option_id
-      }
-   
    

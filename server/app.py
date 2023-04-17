@@ -71,11 +71,9 @@ def orders_by_id(id):
         return make_response(jsonify(dict({"error": "Order not found"})), 404)
     
     else:
-        # GET for Order by ID
         if request.method == 'GET':
             return make_response(jsonify(order.to_dict()), 200)
         
-        # DELETE for Order by ID
         elif request.method == 'DELETE':
 
             db.session.delete(order)
