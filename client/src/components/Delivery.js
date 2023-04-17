@@ -7,7 +7,8 @@ import OrderCard from "./OrderCard";
 
 function Delivery(props) {
 
-    let API = props.API + "/orders";
+    const API = props.API + "/orders";
+    //const API = props.API + "/orders/" + user.id; // use for dynamic site
     const user = useContext(UserContext);
 
     const [orders, setOrders] = useState([]);
@@ -17,7 +18,6 @@ function Delivery(props) {
     }, [API]);
 
     if (user) {
-        //API = props.API + "/orders/" + user.id; // use for dynamic site
         return(
             <div id="content">
                 <h2>Recent Orders</h2>

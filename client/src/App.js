@@ -25,7 +25,7 @@ function App() {
   // const API = "http://localhost:5555"; // for dynamic site
   
   const login = "/users/2"; // for static site
-  // const login = "/check_login"; // for dynamic site
+  // const login = "/login"; // for dynamic site
 
   // Check log in status
   useEffect(() => {

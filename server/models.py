@@ -113,7 +113,10 @@ class Order(db.Model):
    created_at = db.Column(db.DateTime)
    updated_at = db.Column(db.DateTime)
 
+   options = db.relationship('OrderOptions', backref = 'order')
+
    def to_dict(self):
+      options = [x.option for x in self.orderoptions]
       return {
          "id": self.id,
          "cake_id": self.cake_id,
@@ -121,7 +124,7 @@ class Order(db.Model):
          "total_price": self.total_price,
          "ready_date": self.ready_date,
          "delivery": self.delivery,
-         # "options": [option.to_dict() for option in options],
+         "options": [option.item() for option in options],
          "bday_age": self.bday_age,
          "created_at": self.created_at,
          "updated_at": self.updated_at
@@ -138,16 +141,24 @@ class Option(db.Model):
          "id": self.id,
          "item": self.item
       }
+   
+   def item(self):
+      return {
+         self.item
+      }
 
 class OrderOption(db.Model):
    __tablename__ = 'orderoptions'
 
    id = db.Column(db.Integer, primary_key = True)
    cake_id = db.Column(db.Integer)
+   option_id = db.Column(db.Integer)
    
    def to_dict(self):
       return {
-         "id": self.id
+         "id": self.id,
+         "cake_id": self.cake_id,
+         "option_id": self.option_id
       }
    
    

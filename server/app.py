@@ -1,6 +1,6 @@
 from flask import Flask, make_response, jsonify, request, session
 from flask_migrate import Migrate
-from models import db, User
+from models import db, User, Order
 
 app = Flask(__name__)
 
@@ -32,33 +32,68 @@ def register():
         return make_response(jsonify(new_user.to_dict()), 201)
 
 # website login with authentication
-@app.route("/login", methods = ['POST'])
+@app.route("/login", methods = ['GET', 'POST'])
 def login():
-    data = request.get_json()
-    un = data.get('username')
-    pw = data.get('password')
+    if request.method == 'POST':
+        data = request.get_json()
+        un = data.get('username')
+        pw = data.get('password')
 
-    user = User.query.filter(User.username == un).first()
+        user = User.query.filter(User.username == un).first()
 
-    if not user or user.authenticate(pw) == False:
-        return make_response(jsonify(dict({"error": "The username or password is incorrect."})), 401)
-    else:
-        session['user_id'] = user.id
-        return make_response(jsonify(user.to_dict()), 200)
-    
-# website login check
-@app.route("/check_login")
-def check_login():
-    user = User.query.filter(User.id == session.get('user_id')).first()
+        if not user or user.authenticate(pw) == False:
+            return make_response(jsonify(dict({"error": "The username or password is incorrect."})), 401)
+        else:
+            session['user_id'] = user.id
+            return make_response(jsonify(user.to_dict()), 200)
+        
+    elif request.method == 'GET':
+        user = User.query.filter(User.id == session.get('user_id')).first()
 
-    if not user:
-        return make_response(jsonify(dict({"message": "Not Authorized"})), 401)
-    else:
-        return make_response(jsonify(user.to_dict()), 200)
+        if not user:
+            return make_response(jsonify(dict({"message": "Not Authorized"})), 401)
+        else:
+            return make_response(jsonify(user.to_dict()), 200)
 
 # website logout    
 @app.route("/logout", methods = ['DELETE'])
 def logout():
     session['user_id'] = None
     return make_response(jsonify(dict({"message": "No Content"})), 204)
+
+@app.route("/orders/<id>", methods = ['GET', 'DELETE'])
+def orders_by_id(id):
+    
+    order = Order.query.get(id)
+
+     # validates if order exists
+    if not order:
+        return make_response(jsonify(dict({"error": "Order not found"})), 404)
+    
+    else:
+        # GET for Order by ID
+        if request.method == 'GET':
+            return make_response(jsonify(order.to_dict()), 200)
+        
+        # DELETE for Order by ID
+        elif request.method == 'DELETE':
+
+            db.session.delete(order)
+            db.session.commit()
+
+            return make_response(jsonify(dict({"message": "Order deleted"})), 200)
+
+@app.route("/orders", methods = ['POST'])
+def new_order():
+        body = request.get_json()
+        
+        new_order = Order()
+
+        for key, value in body.items():
+            setattr(new_order, key, value)
+
+        db.session.add(new_order)
+        db.session.commit()
+
+        return make_response(jsonify(new_order.to_dict()), 201)
 
