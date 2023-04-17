@@ -56,12 +56,13 @@ class Cake(db.Model):
    contents = db.relationship('CakeContents', backref = 'cake')
 
    def to_dict(self):
+      contents = [x.content for x in self.cakecontents]
       return {
          "id": self.id,
          "name": self.name,
          "size": self.size,
          "image": self.image,
-         # "contents": [content.to_dict() for content in contents],
+         "contents": [content.item() for content in contents],
          "base_type": self.base_type,
          "base_price": self.base_price
       }
@@ -69,35 +70,40 @@ class Cake(db.Model):
 class Content(db.Model):
    __tablename__ = 'contents'
 
-   id = db.Column(db.Integer)
-   name = db.Column(db.String)
+   id = db.Column(db.Integer, primary_key = True)
+   item = db.Column(db.String)
 
    def to_dict(self):
       return {
          "id": self.id,
-         "name": self.name
+         "item": self.item
       }
    
 class CakeContent(db.Model):
    __tablename__ = 'cakecontents'
 
-   id = db.Column(db.Integer)
+   id = db.Column(db.Integer, primary_key = True)
    cake_id = db.Column(db.Integer)
    content_id = db.Column(db.Integer)
-   name = db.Column(db.String)
+   item = db.Column(db.String)
 
    def to_dict(self):
       return {
          "id": self.id,
          "cake_id": self.cake_id,
          "content_id": self.content_id,
-         "name": self.name
+         "item": self.item
+      }
+   
+   def item(self):
+      return {
+         self.item
       }
    
 class Order(db.Model):
    __tablename__ = 'orders'
 
-   id = db.Column(db.Integer)
+   id = db.Column(db.Integer, primary_key = True)
    cake_id = db.Column(db.Integer)
    user_id = db.Column(db.Integer)
    total_price = db.Column(db.Float)
@@ -124,19 +130,20 @@ class Order(db.Model):
 class Option(db.Model):
    __tablename__ = 'options'
 
-   id = db.Column(db.Integer)
-   name = db.Column(db.String)
+   id = db.Column(db.Integer, primary_key = True)
+   item = db.Column(db.String)
 
    def to_dict(self):
       return {
          "id": self.id,
-         "name": self.name
+         "item": self.item
       }
 
 class OrderOption(db.Model):
    __tablename__ = 'orderoptions'
 
-   id = db.Column(db.Integer)
+   id = db.Column(db.Integer, primary_key = True)
+   cake_id = db.Column(db.Integer)
    
    def to_dict(self):
       return {

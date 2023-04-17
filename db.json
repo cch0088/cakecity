@@ -61,7 +61,7 @@
             "name": "Personal Fruit Cake",
             "size": 1,
             "image": "personal-fruit-cake.png",
-            "contents": ["fruit"],
+            "contents": ["cherry", "kiwi"],
             "base_type": 1,
             "base_price": 20
         },
@@ -70,7 +70,7 @@
             "name": "Medium Fruit Cake",
             "size": 2,
             "image": "medium-fruit-cake.png",
-            "contents": ["fruit"],
+            "contents": ["blackberry", "raspberry", "nuts"],
             "base_type": 1,
             "base_price": 30
         },
@@ -79,7 +79,7 @@
             "name": "Large Fruit Cake",
             "size": 3,
             "image": "large-fruit-cake.png",
-            "contents": ["fruit"],
+            "contents": ["pineapple", "roseberry", "nuts"],
             "base_type": 1,
             "base_price": 40
         },
@@ -97,7 +97,7 @@
             "name": "Medium Vanilla Cake",
             "size": 2,
             "image": "medium-vanilla-cake.png",
-            "contents": ["vanilla"],
+            "contents": ["vanilla", "cream"],
             "base_type": 2,
             "base_price": 30
         },
@@ -106,7 +106,7 @@
             "name": "Large Vanilla Cake",
             "size": 3,
             "image": "large-vanilla-cake.png",
-            "contents": ["vanilla"],
+            "contents": ["vanilla", "cream"],
             "base_type": 2,
             "base_price": 40
         },
@@ -115,7 +115,7 @@
             "name": "Personal Chocolate Cake",
             "size": 1,
             "image": "personal-chocolate-cake.png",
-            "contents": ["chocolate"],
+            "contents": ["chocolate", "icecream"],
             "base_type": 3,
             "base_price": 20
         },
@@ -133,7 +133,7 @@
             "name": "Large Chocolate Cake",
             "size": 3,
             "image": "large-chocolate-cake.png",
-            "contents": ["chocolate"],
+            "contents": ["chocolate", "oreos"],
             "base_type": 3,
             "base_price": 40
         }
