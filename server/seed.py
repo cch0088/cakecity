@@ -58,13 +58,26 @@ with app.app_context():
             
             db.session.add(options)
 
-    # for c in data['cakes']:
-    #     cakes = Cake(name = c['name'],
-    #                  size = c['size'],
-    #                  image = c['image'],
-    #                  contents = c['contents'],
-    #                  base_type = c['base_type'],
-    #                  base_price = c['base_price'])
-        # db.session.add(cakes)
+    x = 0
+    for i, c in enumerate(data['cakes']):
+        cakes = Cake(name = c['name'],
+                     size = c['size'],
+                     image = c['image'],
+                     base_type = c['base_type'],
+                     base_price = c['base_price'])
+        
+        db.session.add(cakes)
+
+        for content in c['contents']:
+            contents_query = Content.query.filter(Content.name == content).first()
+            if contents_query:
+                cakecontents = CakeContent(cake_id = i + 1, content_id = contents_query.id)
+                db.session.add(cakecontents)
+            else:
+                x = x + 1
+                contents = Content(name = content)
+                cakecontents = CakeContent(cake_id = i + 1, content_id = x)
+                db.session.add(contents)
+                db.session.add(cakecontents)
 
     db.session.commit()

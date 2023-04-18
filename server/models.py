@@ -92,14 +92,12 @@ class CakeContent(db.Model):
    id = db.Column(db.Integer, primary_key = True)
    cake_id = db.Column(db.Integer, db.ForeignKey('cakes.id'))
    content_id = db.Column(db.Integer, db.ForeignKey('contents.id'))
-   name = db.Column(db.String)
 
    def to_dict(self):
       return {
          "id": self.id,
          "cake_id": self.cake_id,
          "content_id": self.content_id,
-         "name": self.name
       }
    
 class Order(db.Model):
