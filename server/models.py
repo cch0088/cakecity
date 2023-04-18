@@ -58,16 +58,16 @@ class Cake(db.Model):
    base_type = db.Column(db.Integer)
    base_price = db.Column(db.Float)
 
-   contents = db.relationship('CakeContent', backref = 'Cake')
+   cake_contents = db.relationship('CakeContent', backref = 'Cake')
 
    def to_dict(self):
-      contents = [x.content for x in self.cakecontents]
+      contents = Content.query.join(CakeContent).filter(CakeContent.cake_id == self.id).all()
       return {
          "id": self.id,
          "name": self.name,
          "size": self.size,
          "image": self.image,
-         "contents": [content.to_dict() for content in contents],
+         "contents": [content._item() for content in contents],
          "base_type": self.base_type,
          "base_price": self.base_price
       }
@@ -80,6 +80,9 @@ class Content(db.Model):
 
    cakes = db.relationship('CakeContent', backref = 'Content')
 
+   def _item(self):
+      return self.name
+   
    def to_dict(self):
       return {
          "id": self.id,
@@ -113,10 +116,10 @@ class Order(db.Model):
    created_at = db.Column(db.DateTime, server_default=func.now())
    updated_at = db.Column(db.DateTime, onupdate=func.now())
 
-   options = db.relationship('Option', backref = 'Order')
+   order_options = db.relationship('OrderOption', backref = 'Order')
 
    def to_dict(self):
-      options = [x.option for x in self.orderoptions]
+      options = Option.query.join(OrderOption).filter(OrderOption.order_id == self.id).all()
       return {
          "id": self.id,
          "cake_id": self.cake_id,
@@ -124,7 +127,7 @@ class Order(db.Model):
          "total_price": self.total_price,
          "ready_date": self.ready_date,
          "delivery": self.delivery,
-         "options": [option.to_dict() for option in options],
+         "options": [option._item() for option in options],
          "bday_age": self.bday_age,
          "created_at": self.created_at,
          "updated_at": self.updated_at
@@ -134,12 +137,30 @@ class Option(db.Model):
    __tablename__ = 'options'
 
    id = db.Column(db.Integer, primary_key = True)
-   order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
    name = db.Column(db.String)
+
+   orders = db.relationship('OrderOption', backref = 'Option')
+
+   def _item(self):
+      return self.name
 
    def to_dict(self):
       return {
          "id": self.id,
          "name": self.name
+      }
+   
+class OrderOption(db.Model):
+   __tablename__ = 'orderoptions'
+
+   id = db.Column(db.Integer, primary_key = True)
+   order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+   option_id = db.Column(db.Integer, db.ForeignKey('options.id'))
+
+   def to_dict(self):
+      return {
+         "id": self.id,
+         "order_id": self.order_id,
+         "option_id": self.option_id
       }
    

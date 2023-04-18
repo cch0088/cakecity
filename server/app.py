@@ -1,6 +1,6 @@
 from flask import Flask, make_response, jsonify, request, session
 from flask_migrate import Migrate
-from models import db, User, Order
+from models import db, User, Cake, Content, CakeContent, Order, Option
 
 app = Flask(__name__)
 
@@ -95,3 +95,9 @@ def new_order():
 
         return make_response(jsonify(new_order.to_dict()), 201)
 
+# get all cakes
+@app.route("/cakes")
+def get_cakes():
+    cakes = Cake.query.all()
+    cakes_dict = [cake.to_dict() for cake in cakes]
+    return make_response(jsonify(cakes_dict), 200)

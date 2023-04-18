@@ -1,5 +1,5 @@
 from app import app
-from models import db, User, Cake, Content, CakeContent, Order, Option
+from models import db, User, Cake, Content, CakeContent, Order, Option, OrderOption
 from datetime import date
 import json
 
@@ -36,6 +36,7 @@ with app.app_context():
         
         db.session.add(user)
     
+    z = 0
     for i, o in enumerate(data['orders']):
 
         created = date(int(o['created_at'][6:10]), int(o['created_at'][0:2]), int(o['created_at'][3:5]))
@@ -53,10 +54,17 @@ with app.app_context():
         
         db.session.add(orders)
 
-        for opt in o['options']:
-            options = Option(name = opt, order_id = i + 1)
-            
-            db.session.add(options)
+        for option in o['options']:
+            options_query = Option.query.filter(Option.name == option).first()
+            if options_query:
+                orderoptions = OrderOption(order_id = i + 1, option_id = options_query.id)
+                db.session.add(orderoptions)
+            else:
+                z = z + 1
+                options = Option(name = option)
+                orderoptions = OrderOption(order_id = i + 1, option_id = z)
+                db.session.add(options)
+                db.session.add(orderoptions)
 
     x = 0
     for i, c in enumerate(data['cakes']):
