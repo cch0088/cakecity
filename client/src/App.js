@@ -21,11 +21,11 @@ function App() {
   const [user, setUser] = useState();
   const [buildCakeID, setBuildCakeID] = useState(1);
 
-  const API = "https://my-json-server.typicode.com/cch0088/cakecity"; // for static site
-  // const API = "http://localhost:5555"; // for dynamic site
+  // const API = "https://my-json-server.typicode.com/cch0088/cakecity"; // for static site
+  const API = "http://localhost:5555/cakecity/api"; // for dynamic site
   
-  const login = "/users/2"; // for static site
-  // const login = "/login"; // for dynamic site
+  // const login = "/users/2"; // for static site
+  const login = "/login"; // for dynamic site
 
   // Check log in status
   useEffect(() => {

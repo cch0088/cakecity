@@ -2,8 +2,8 @@
     "users": [
         {
             "id": 1,
-            "username": "admin",
-            "password": "admin",
+            "username": "Admin",
+            "password": "Admin",
             "firstname": "Admin",
             "lastname": "User",
             "address1": "100 Fake St",
@@ -18,8 +18,8 @@
         },
         {
             "id": 2,
-            "username": "test",
-            "password": "test",
+            "username": "Test",
+            "password": "Test",
             "firstname": "Test",
             "lastname": "User",
             "address1": "100 Fake St",

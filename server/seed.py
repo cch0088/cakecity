@@ -11,6 +11,7 @@ with app.app_context():
     CakeContent.query.delete()
     Order.query.delete()
     Option.query.delete()
+    OrderOption.query.delete()
 
     static_db = open('../db.json')
     data = json.load(static_db)
