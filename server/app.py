@@ -1,6 +1,7 @@
 from flask import Flask, make_response, jsonify, request, session
 from flask_migrate import Migrate
 from models import db, User, Cake, Content, CakeContent, Order, Option
+from datetime import date
 
 app = Flask(__name__)
 
@@ -12,12 +13,12 @@ migrate = Migrate(app, db)
 db.init_app(app)
 
 # default route
-@app.route("/")
+@app.route("/cakecity")
 def default_route():
     return make_response(jsonify(dict({"status": "Default route"})), 200)
 
 # website registration with validation against duplicate users
-@app.route("/register", methods = ['POST'])
+@app.route("/cakecity/register", methods = ['POST'])
 def register():
     data = request.get_json()
     un = data.get('username')
@@ -32,7 +33,7 @@ def register():
         return make_response(jsonify(new_user.to_dict()), 201)
 
 # website login with authentication
-@app.route("/login", methods = ['GET', 'POST'])
+@app.route("/cakecity/login", methods = ['GET', 'POST'])
 def login():
     if request.method == 'POST':
         data = request.get_json()
@@ -56,47 +57,65 @@ def login():
             return make_response(jsonify(user.to_dict()), 200)
 
 # website logout    
-@app.route("/logout", methods = ['DELETE'])
+@app.route("/cakecity/logout", methods = ['DELETE'])
 def logout():
     session['user_id'] = None
     return make_response(jsonify(dict({"message": "No Content"})), 204)
 
-@app.route("/orders/<id>", methods = ['GET', 'DELETE'])
-def orders_by_id(id):
+# get orders by user id
+@app.route("/cakecity/orders/<userID>", methods = ['GET', 'DELETE'])
+def orders_by_id(userID):
     
-    order = Order.query.get(id)
+    orders = Order.query.filter(Order.user_id == userID).all()
+
+     # validates if orders exist
+    if not orders:
+        return make_response(jsonify(dict({"error": "No orders for this user"})), 404)
+    
+    else:
+        orders_dict = [order.to_dict() for order in orders]
+        return make_response(jsonify(orders_dict), 200)
+
+# delete order by id        
+@app.route("/cakecity/orders/<ID>", methods = ['DELETE'])
+def delete_order_by_id(ID):
+    order = Order.query.get(ID)
 
      # validates if order exists
     if not order:
         return make_response(jsonify(dict({"error": "Order not found"})), 404)
     
     else:
-        if request.method == 'GET':
-            return make_response(jsonify(order.to_dict()), 200)
-        
-        elif request.method == 'DELETE':
+        db.session.delete(order)
+        db.session.commit()
 
-            db.session.delete(order)
-            db.session.commit()
+        return make_response(jsonify(dict({"message": "Order deleted"})), 200)
 
-            return make_response(jsonify(dict({"message": "Order deleted"})), 200)
-
-@app.route("/orders", methods = ['POST'])
+# create new order
+@app.route("/cakecity/orders", methods = ['POST'])
 def new_order():
         body = request.get_json()
         
         new_order = Order()
+        new_order_options = Option()
 
         for key, value in body.items():
-            setattr(new_order, key, value)
+            if key == 'options':
+                pass
+            elif key == 'ready_date':
+                ready = date(int(value[6:10]), int(value[0:2]), int(value[3:5]))
+                setattr(new_order, key, ready)
+            else:
+                setattr(new_order, key, value)
 
         db.session.add(new_order)
+        db.session.add(new_order_options)
         db.session.commit()
 
         return make_response(jsonify(new_order.to_dict()), 201)
 
 # get all cakes
-@app.route("/cakes")
+@app.route("/cakecity/cakes")
 def get_cakes():
     cakes = Cake.query.all()
     cakes_dict = [cake.to_dict() for cake in cakes]
