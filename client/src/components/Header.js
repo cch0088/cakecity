@@ -13,7 +13,9 @@ function Header(props) {
 
         const API = props.API + "/logout";
         const API_OPT = {
-          method: 'DELETE'
+            mode: 'cors',
+            credentials: 'include',
+            method: 'DELETE'
         };
   
         fetch(API, API_OPT).then(history.push("/cakecity/login"));
