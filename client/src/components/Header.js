@@ -3,15 +3,15 @@ import { React, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from '../App';
 
-function Header({setUser}) {
+function Header(props) {
 
     const user = useContext(UserContext);
     const history = useHistory();
 
     function handleLogout() {
-        setUser(null);
+        props.setUser(null);
 
-        const API = "/logout";
+        const API = props.API + "/logout";
         const API_OPT = {
           method: 'DELETE'
         };

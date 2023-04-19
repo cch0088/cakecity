@@ -16,16 +16,19 @@ import './App.css';
 export const UserContext = createContext();
 
 function App() {
-
+  // change state to true for hosting with plain json file
+  const [staticSite, setStaticSite] = useState(false);
 
   const [user, setUser] = useState();
   const [buildCakeID, setBuildCakeID] = useState(1);
 
-  // const API = "https://my-json-server.typicode.com/cch0088/cakecity"; // for static site
-  const API = "http://localhost:5555/cakecity/api"; // for dynamic site
-  
-  // const login = "/users/2"; // for static site
-  const login = "/login"; // for dynamic site
+  let API = "http://localhost:5555/cakecity/api";
+  let login = "/login";
+
+  if (staticSite) {
+    API = "https://my-json-server.typicode.com/cch0088/cakecity";
+    login = "/users/2";
+  }
 
   // Check log in status
   useEffect(() => {
@@ -53,42 +56,42 @@ function App() {
             <Home />
           </Route>
           <Route path="/cakecity/login">
-            <Header setUser={setUser} />
+            <Header setUser={setUser} API={API} />
             <NavBar />
-            <Account type={0} API={API} />
+            <Account type={0} API={API} setUser={setUser} />
           </Route>
           <Route path="/cakecity/register">
-            <Header setUser={setUser} />
+            <Header setUser={setUser} API={API} />
             <NavBar />
             <Account type={1} API={API} />
           </Route>
           <Route path="/cakecity/forgot">
-            <Header setUser={setUser}/>
+            <Header setUser={setUser} API={API}/>
             <NavBar />
             <Account type={2} API={API} />
           </Route>
           <Route path="/cakecity/order">
-            <Header setUser={setUser} />
+            <Header setUser={setUser} API={API} />
             <NavBar />
             <Order />
           </Route>
           <Route path="/cakecity/delivery">
-            <Header setUser={setUser} />
+            <Header setUser={setUser} API={API} />
             <NavBar/>
-            <Delivery API={API} />
+            <Delivery API={API} staticSite={staticSite} />
           </Route>
           <Route path="/cakecity/menu">
-            <Header setUser={setUser}/>
+            <Header setUser={setUser} API={API} />
             <NavBar />
             <CakeMenu setBuildCakeID={setBuildCakeID} API={API} />
           </Route>
           <Route path="/cakecity/cakebuilder">
-            <Header setUser={setUser}/>
+            <Header setUser={setUser} API={API} />
             <NavBar />
             <CakeBuilder buildCakeID={buildCakeID} API={API} />
           </Route>
           <Route path="/cakecity/contact">
-            <Header setUser={setUser} />
+            <Header setUser={setUser} API={API} />
             <NavBar />
             <Contact />
           </Route>

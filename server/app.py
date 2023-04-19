@@ -1,11 +1,11 @@
 from flask import Flask, make_response, jsonify, request, session
 from flask_cors import CORS
 from flask_migrate import Migrate
-from models import db, User, Cake, Content, CakeContent, Order, Option, OrderOption
+from models import db, User, Cake, Order, Option, OrderOption
 from datetime import date
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/cakecity/api/*": {"origins": "*"}})
+cors = CORS(app, supports_credentials=True, resources={r"/cakecity/api/*": {"origins": "*"}})
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cakecity.db'
 app.secret_key = 'kijuna4rg9ha34oiward89034onmd903w409m0909b'
@@ -79,18 +79,16 @@ def orders_by_id(userID):
         return make_response(jsonify(orders_dict), 200)
 
 # delete order by id        
-@app.route("/cakecity/api/orders/<ID>", methods = ['DELETE'])
-def delete_order_by_id(ID):
-    order = Order.query.get(ID)
+@app.route("/cakecity/api/orders/<orderID>", methods = ['DELETE'])
+def delete_order_by_id(orderID):
+    order = Order.query.get(orderID)
 
      # validates if order exists
     if not order:
         return make_response(jsonify(dict({"error": "Order not found"})), 404)
-    
     else:
         db.session.delete(order)
         db.session.commit()
-
         return make_response(jsonify(dict({"message": "Order deleted"})), 200)
 
 # create new order
@@ -116,6 +114,17 @@ def new_order():
         db.session.commit()
 
         return make_response(jsonify(new_order.to_dict()), 201)
+
+# get single cake
+@app.route("/cakecity/api/cakes/<cakeID>")
+def get_cake(cakeID):
+    cake = Cake.query.get(cakeID)
+
+    # validate if cake exists
+    if not cake:
+        return make_response(jsonify(dict({"error": "Cake not found"})), 404)
+    else:
+        return make_response(jsonify(cake.to_dict()), 200)
 
 # get all cakes
 @app.route("/cakecity/api/cakes")

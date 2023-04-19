@@ -110,7 +110,7 @@ class Order(db.Model):
    cake_id = db.Column(db.Integer, db.ForeignKey('cakes.id'))
    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
    total_price = db.Column(db.Float)
-   ready_date = db.Column(db.DateTime)
+   ready_date = db.Column(db.Date)
    delivery = db.Column(db.String)
    bday_age = db.Column(db.Integer)
    created_at = db.Column(db.DateTime, server_default=func.now())
@@ -125,7 +125,7 @@ class Order(db.Model):
          "cake_id": self.cake_id,
          "user_id": self.user_id,
          "total_price": self.total_price,
-         "ready_date": self.ready_date,
+         "ready_date": self.ready_date.strftime("%x"),
          "delivery": self.delivery,
          "options": [option._item() for option in options],
          "bday_age": self.bday_age,

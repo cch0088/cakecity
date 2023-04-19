@@ -13,6 +13,7 @@ function OrderCard(props) {
 
     const [cake, setCake] = useState([]);
     const API = props.API + "/cakes/" + props.cake_id;
+    const API_ORDER = props.API + "/orders";
 
     useEffect(() => {
         fetch(API).then(resp => resp.json()).then(data => setCake(data));
@@ -20,7 +21,16 @@ function OrderCard(props) {
 
     function handleDelete(e) {
         // Get Order ID
-        console.log(parseInt(e.target.parentNode.childNodes[0].children[1].textContent));
+        const order_id = parseInt(e.target.parentNode.childNodes[0].children[1].textContent);
+        const delete_api = API_ORDER + "/" + order_id;
+
+        const API_OPT = {
+            method: 'DELETE'
+        };
+
+        fetch(delete_api, API_OPT)
+        .then(resp => resp.json());
+        
         e.target.parentNode.remove();
     }
 

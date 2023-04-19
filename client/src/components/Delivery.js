@@ -1,15 +1,19 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from '../App';
-import Account from "./Account";
-
+import { useHistory } from "react-router-dom";
 import OrderCard from "./OrderCard";
 
 function Delivery(props) {
 
-    const API = props.API + "/orders";
-    //const API = props.API + "/orders/" + user.id; // use for dynamic site
     const user = useContext(UserContext);
+    const history = useHistory();
+
+    let API = props.API + "/orders";
+
+    if (user && props.staticSite == false) {
+        API = props.API + "/orders/" + user.id;
+    }
 
     const [orders, setOrders] = useState([]);
 
@@ -25,7 +29,7 @@ function Delivery(props) {
             </div>)
     }
     else {
-        return <Account type={0} API={props.API} />;
+        history.push("/cakecity/login");
     }
     
 }

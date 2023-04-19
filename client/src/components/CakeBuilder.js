@@ -10,6 +10,7 @@ function CakeBuilder(props) {
     const [cake, setCake] = useState([]);
     const [readyDate, setReadyDate] = useState(new Date().toISOString().slice(0, 10));
     const API = props.API + "/cakes/" + props.buildCakeID;
+    const new_order_api = props.API + "/orders";
     const user = useContext(UserContext);
 
     const [extraCost, setExtraCost] = useState(0);
@@ -108,7 +109,7 @@ function CakeBuilder(props) {
             body: JSON.stringify(newOrder)
         }
 
-        fetch(API, API_OPT).then(resp => resp.json()).then(history.push("/cakecity/delivery"));
+        fetch(new_order_api, API_OPT).then(resp => resp.json()).then(history.push("/cakecity/delivery"));
     }
 
 return (

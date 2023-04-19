@@ -1,8 +1,8 @@
 """Create table
 
-Revision ID: f1d72e5b5073
+Revision ID: df3aa94ae35a
 Revises: 
-Create Date: 2023-04-18 17:51:56.137557
+Create Date: 2023-04-18 19:37:54.738583
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f1d72e5b5073'
+revision = 'df3aa94ae35a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -68,7 +68,7 @@ def upgrade():
     sa.Column('cake_id', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('total_price', sa.Float(), nullable=True),
-    sa.Column('ready_date', sa.DateTime(), nullable=True),
+    sa.Column('ready_date', sa.Date(), nullable=True),
     sa.Column('delivery', sa.String(), nullable=True),
     sa.Column('bday_age', sa.Integer(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),

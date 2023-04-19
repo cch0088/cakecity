@@ -1,9 +1,12 @@
 import { React, useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 function Login(props) {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState(""); 
+    const [error, setError] = useState("");
+
+    const history = useHistory();
     
     function handleLogin(event) {
         const API = props.API + "/login";
@@ -18,6 +21,8 @@ function Login(props) {
 
             const API_OPT = {
                 method: 'POST',
+                mode: "cors",
+                credentials: "include",
                 headers: { 
                     'Content-Type': 'application/json'
                 },
@@ -27,11 +32,18 @@ function Login(props) {
             fetch(API, API_OPT)
             .then(resp => resp.json())
             .then(data => {
-                for (let key in data)
-                {
-                    if (key === 'error')
+                if (data) {
+                    for (let key in data)
                     {
-                        setError(data[key]);
+                        if (key === 'error')
+                        {
+                            setError(data[key]);
+                        }
+                        else
+                        {
+                            props.setUser(data);
+                            history.push("/cakecity/menu");
+                        }
                     }
                 }
             })
