@@ -17,6 +17,7 @@ export const UserContext = createContext();
 
 function App() {
   // change state to true for hosting with plain json file
+  // eslint-disable-next-line
   const [staticSite, setStaticSite] = useState(false);
 
   const [user, setUser] = useState();
@@ -30,9 +31,11 @@ function App() {
     login = "/users/2";
   }
 
+  let API_LOGIN = API + login;
+
   // Check log in status
   useEffect(() => {
-    fetch(API + login).then(
+    fetch(API_LOGIN).then(
       (resp) => {
         if (resp.ok) {
           resp.json().then(
@@ -43,7 +46,7 @@ function App() {
         }
       }
     )
-  }, []);
+  }, [API_LOGIN]);
 
   return (
     <div>

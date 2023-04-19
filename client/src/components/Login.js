@@ -21,8 +21,8 @@ function Login(props) {
 
             const API_OPT = {
                 method: 'POST',
-                mode: "cors",
-                credentials: "include",
+                mode: 'cors',
+                credentials: 'include',
                 headers: { 
                     'Content-Type': 'application/json'
                 },

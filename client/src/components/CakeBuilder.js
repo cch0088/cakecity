@@ -91,11 +91,19 @@ function CakeBuilder(props) {
             deliveryOption = "pickup";
         }
 
+        function reformatDate(date)
+        {
+            const year = date.slice(0, 4);
+            const month = date.slice(5, 7);
+            const day = date.slice(8, 10);
+            return month + '/' + day + '/' + year;
+        }
+
         const newOrder = {
             "cake_id": cake.id,
             "user_id": user.id,
             "total_price": final_price,
-            "ready_date": readyDate,
+            "ready_date": reformatDate(readyDate),
             "delivery": deliveryOption,
             "options": cakeOptions,
             "bday_age": age
