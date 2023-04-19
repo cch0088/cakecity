@@ -6,6 +6,7 @@ This app features a few design considerations:
 - The app is usable on both a smart phone and a desktop because it implements responsive design
 - The cake menu screen has a filter to narrow the choices of cakes
 - The recent orders page will show orders specific to the user that is logged in
+- The order page will dynamically calculate the price with sales tax based on selected options
 - The app menu system is meant to be quick and intuitive to use without needing a hamburger menu
 - The back end uses a hashed password system to securely store account passwords
 - The app was designed to work with either a static JSON DB file or a dynamic web framework, in this case Flask
