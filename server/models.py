@@ -129,7 +129,7 @@ class Order(db.Model):
          "delivery": self.delivery,
          "options": [option._item() for option in options],
          "bday_age": self.bday_age,
-         "created_at": self.created_at,
+         "created_at": self.created_at.strftime("%x"),
          "updated_at": self.updated_at
       }
    

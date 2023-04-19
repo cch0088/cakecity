@@ -52,6 +52,61 @@ return(
             <div className="div-table-cell">Order Date</div>
             <div className="div-table-cell">{props.created_at}</div>
         </div>
+        {
+            (props.options.find(opt => opt === "birthday"))
+            ?
+            (
+                <div className="div-table-heading">
+                    <div className="div-table-cell">Cake Option</div>
+                    <div className="div-table-cell">Happy Birthday Text</div>
+                </div>
+            )
+            : null
+        }
+        {
+            (props.options.find(opt => opt === "candle"))
+            ?
+            (
+                <div className="div-table-heading">
+                    <div className="div-table-cell">Cake Option</div>
+                    <div className="div-table-cell">Birthday Candles</div>
+                </div>
+            )
+            : null
+        }
+        {
+            (props.bday_age > 0)
+            ?
+            (
+                <div className="div-table-heading">
+                    <div className="div-table-cell">Birthday Age</div>
+                    <div className="div-table-cell">{props.bday_age}</div>
+                </div>
+            )
+            : null
+        }
+        {
+            (props.options.find(opt => opt === "wrap"))
+            ?
+            (
+                <div className="div-table-heading">
+                    <div className="div-table-cell">Cake Option</div>
+                    <div className="div-table-cell">Gift Wrap</div>
+                </div>
+            )
+            : null
+        }
+        {
+            (props.options.find(opt => opt === "photo"))
+            ?
+            (
+                <div className="div-table-heading">
+                    <div className="div-table-cell">Cake Option</div>
+                    <div className="div-table-cell">Photo on Cake</div>
+                </div>
+            )
+            : null
+        }
         <div className="div-table-heading">
             <div className="div-table-cell">Total Price</div>
             <div className="div-table-cell">${RoundFloat(props.total_price)}</div>

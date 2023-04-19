@@ -92,28 +92,32 @@ def delete_order_by_id(orderID):
         return make_response(jsonify(dict({"message": "Order deleted"})), 200)
 
 # create new order
-@app.route("/cakecity/api/orders", methods = ['POST'])
+@app.route("/cakecity/api/orders", methods = ['GET', 'POST'])
 def new_order():
-        body = request.get_json()
-        new_order = Order()
-        last_order = Order.query.order_by(-Order.id).first()
+        if request.method == 'POST':
+            body = request.get_json()
+            new_order = Order()
+            last_order = Order.query.order_by(-Order.id).first()
 
-        for key, value in body.items():
-            if key == 'options':
-                for option in value:
-                    option_query = Option.query.filter(Option.name == option).first()
-                    new_order_options = OrderOption(order_id = last_order.id + 1, option_id = option_query.id)
-                    db.session.add(new_order_options)
-            elif key == 'ready_date':
-                ready = date(int(value[6:10]), int(value[0:2]), int(value[3:5]))
-                setattr(new_order, key, ready)
-            else:
-                setattr(new_order, key, value)
+            for key, value in body.items():
+                if key == 'options':
+                    for option in value:
+                        option_query = Option.query.filter(Option.name == option).first()
+                        new_order_options = OrderOption(order_id = last_order.id + 1, option_id = option_query.id)
+                        db.session.add(new_order_options)
+                elif key == 'ready_date':
+                    ready = date(int(value[6:10]), int(value[0:2]), int(value[3:5]))
+                    setattr(new_order, key, ready)
+                else:
+                    setattr(new_order, key, value)
 
-        db.session.add(new_order)
-        db.session.commit()
+            db.session.add(new_order)
+            db.session.commit()
 
-        return make_response(jsonify(new_order.to_dict()), 201)
+            return make_response(jsonify(new_order.to_dict()), 201)
+        
+        elif request.method == 'GET':
+            return make_response(jsonify(dict({"error": "Not logged in"})), 401)
 
 # get single cake
 @app.route("/cakecity/api/cakes/<cakeID>")
