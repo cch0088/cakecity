@@ -30,12 +30,17 @@ function App() {
     API = "https://my-json-server.typicode.com/cch0088/cakecity";
     login = "/users/2";
   }
-
+  
+  // Check log in status
   let API_LOGIN = API + login;
 
-  // Check log in status
   useEffect(() => {
-    fetch(API_LOGIN).then(
+    const API_OPT = {
+      method: 'GET',
+      mode: 'cors',
+      credentials: 'include',
+    };
+    fetch(API_LOGIN, API_OPT).then(
       (resp) => {
         if (resp.ok) {
           resp.json().then(
