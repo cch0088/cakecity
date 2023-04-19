@@ -66,7 +66,7 @@ return (
     <div id="site-form">
         <div className="title-label">SIGN IN</div>
         {(error) ? <div className='error-label'>{error}</div> : null}
-        <div className="label-login">E-mail or Username</div>
+        <div className="label-login">Username</div>
         <input className="field-login" type="text" name="username" onChange={handleUsername} value={username}/>
         <div className="label-login">Password</div>
         <input className="field-login" type="password" name="password" onChange={handlePassword} value={password}/>
