@@ -98,12 +98,18 @@ def new_order():
             body = request.get_json()
             new_order = Order()
             last_order = Order.query.order_by(-Order.id).first()
+            new_order_id = 1
+
+            if not last_order:
+                pass    
+            else:
+                new_order_id = last_order.id + 1
 
             for key, value in body.items():
                 if key == 'options':
                     for option in value:
                         option_query = Option.query.filter(Option.name == option).first()
-                        new_order_options = OrderOption(order_id = last_order.id + 1, option_id = option_query.id)
+                        new_order_options = OrderOption(order_id = new_order_id, option_id = option_query.id)
                         db.session.add(new_order_options)
                 elif key == 'ready_date':
                     ready = date(int(value[6:10]), int(value[0:2]), int(value[3:5]))
